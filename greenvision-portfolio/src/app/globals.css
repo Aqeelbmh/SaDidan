@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0f1c;
+  --foreground: #e0f7fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0f1c 0%, #0e223f 100%);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: rgba(30,40,60,0.7);
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255,255,255,0.12);
+}
+
+.neon-text {
+  color: #39FF14;
+  text-shadow: 0 0 8px #39FF14, 0 0 16px #00F0FF;
+}
+
+.neon-border {
+  border: 2px solid #00FFD0;
+  box-shadow: 0 0 8px #00FFD0, 0 0 16px #39FF14;
+}
+
+.neon-btn {
+  background: linear-gradient(90deg, #00F0FF 0%, #39FF14 100%);
+  color: #0a0f1c;
+  box-shadow: 0 0 16px 2px #39FF14, 0 0 32px 4px #00F0FF;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 32px 8px #00FFD0, 0 0 64px 16px #FF00EA;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #0a0f1c;
+}
+::-webkit-scrollbar-thumb {
+  background: #00F0FF;
+  border-radius: 8px;
+}
