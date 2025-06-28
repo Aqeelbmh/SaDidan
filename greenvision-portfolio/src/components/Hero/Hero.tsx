@@ -3,6 +3,17 @@ import React from 'react';
 import Image from "next/image";
 
 const Hero: React.FC = () => {
+  const handleDownloadCV = () => {
+    // Create a link element to trigger the download
+    const link = document.createElement('a');
+    link.href = '/CV-Ikhwanussafa-Sadidan.pdf';
+    link.download = 'CV-Ikhwanussafa-Sadidan.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826]">
       {/* Animated background orbs */}
@@ -67,7 +78,10 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25">
+              <button 
+                onClick={handleDownloadCV}
+                className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25"
+              >
                 <span className="flex items-center gap-2">
                   🟢 Download CV
                 </span>
