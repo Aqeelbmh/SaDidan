@@ -68,17 +68,17 @@ const Contact = () => {
             <div className="pt-6">
               <h4 className="font-semibold text-white mb-4 drop-shadow-neon">Connect on Social Media</h4>
               <div className="flex space-x-4">
-                <a href="https://facebook.com/sadidan.environmental" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="Facebook">
-                  <Image src="/FacebookIcon.svg" alt="Facebook" width={20} height={20} />
+                <a href="https://id.linkedin.com/in/sadidan-ikhwanussafa-9624b990" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-blue-700 hover:bg-blue-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="LinkedIn">
+                  <Image src="/LinkedInIcon.svg" alt="LinkedIn" width={20} height={20} />
                 </a>
-                <a href="https://wa.me/6281299880365" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-green-600 hover:bg-green-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="WhatsApp">
-                  <Image src="/WhatsAppIcon.svg" alt="WhatsApp" width={20} height={20} />
-                </a>
-                <a href="https://instagram.com/sadidan.environmental" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="Instagram">
+                <a href="https://instagram.com/sadidun" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="Instagram">
                    <Image src="/InstagramIcon.svg" alt="Instagram" width={20} height={20} />
                 </a>
-                <a href="https://linkedin.com/in/ikhwanussafa-sadidan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-blue-700 hover:bg-blue-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="LinkedIn">
-                  <Image src="/LinkedInIcon.svg" alt="LinkedIn" width={20} height={20} />
+                <a href="https://youtube.com/@sadidan26" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-red-600 hover:bg-red-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="YouTube">
+                  <Image src="/YouTubeIcon.svg" alt="YouTube" width={20} height={20} />
+                </a>
+                <a href="mailto:sadidan@unsika.ac.id" className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-600 hover:bg-cyan-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon" aria-label="Email">
+                  <Image src="/EmailIcon.svg" alt="Email" width={20} height={20} />
                 </a>
               </div>
             </div>
@@ -154,3 +154,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

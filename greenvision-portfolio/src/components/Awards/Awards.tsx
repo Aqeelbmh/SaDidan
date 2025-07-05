@@ -11,40 +11,67 @@ const AwardIcon = () => (
 
 const awards = [
   {
-    title: "Outstanding Environmental Research Award",
-    organization: "Indonesian Environmental Society",
+    title: "Best Pitch Presenter",
+    organization: "SEARCA Agro Innovator Program, University of the Philippines Los Banos",
+    year: "2025",
+    description: "Recognized for outstanding presentation skills and innovative pitch in agricultural innovation program.",
+    category: "Presentation"
+  },
+  {
+    title: "Best Presenter",
+    organization: "6th Borobudur International Symposium on Science and Technology, UNIMMA",
+    year: "2024",
+    description: "Awarded for exceptional presentation at international symposium on science and technology.",
+    category: "Presentation"
+  },
+  {
+    title: "Supervising Lecturer for PIMNAS 2024",
+    organization: "PKM Video Constructive Ideas",
+    year: "2024",
+    description: "Successfully supervised students for PIMNAS 2024 in PKM Video Constructive Ideas category.",
+    category: "Supervision"
+  },
+  {
+    title: "SPADA Documentary Video Grant",
+    organization: "Indonesian Ministry of Culture, Research and Technology",
     year: "2023",
-    description: "Recognized for innovative research in sustainable waste management and circular economy implementation.",
+    description: "Received grant for Learning Video Innovation Competition from the Indonesian Ministry of Culture, Research and Technology.",
+    category: "Grant"
   },
   {
-    title: "Best Paper Award",
-    organization: "International Conference on Environmental Science",
+    title: "Best Presenter",
+    organization: "4th Borobudur International Symposium on Science and Technology, UNIMMA",
     year: "2022",
-    description: "Awarded for groundbreaking research on biodiversity conservation in urban ecosystems.",
+    description: "Recognized for outstanding presentation at international symposium on science and technology.",
+    category: "Presentation"
   },
   {
-    title: "Environmental Leadership Award",
-    organization: "Green Campus Initiative",
-    year: "2021",
-    description: "Honored for exceptional leadership in promoting environmental awareness and sustainable practices.",
-  },
-  {
-    title: "Academic Excellence Award",
-    organization: "Tomsk Polytechnic University",
+    title: "Second Best Paper",
+    organization: "XIII International Scientific Symposium, Tomsk Polytechnic University",
     year: "2019",
-    description: "Graduated with distinction for outstanding academic performance in Ecology & Environmental Management.",
+    description: "Awarded second place for research paper on 'Geoecological Problem of Subsoil Development'.",
+    category: "Research"
   },
   {
-    title: "Community Service Award",
-    organization: "Environmental Education Foundation",
-    year: "2020",
-    description: "Recognized for contributions to environmental education and community outreach programs.",
+    title: "Third Best Paper",
+    organization: "XIII International Scientific Symposium, Tomsk Polytechnic University",
+    year: "2018",
+    description: "Awarded third place for research paper on 'Geoecological Problem of Subsoil Development'.",
+    category: "Research"
   },
   {
-    title: "Innovation in Sustainability Award",
-    organization: "Sustainable Development Council",
-    year: "2022",
-    description: "Awarded for developing innovative approaches to climate change adaptation and resilience.",
+    title: "Russian Government Scholarship",
+    organization: "Russian Government",
+    year: "2016-2019",
+    description: "Full scholarship awardee for master's degree studies in Russia.",
+    category: "Scholarship"
+  },
+  {
+    title: "Pikiran Rakyat Scholarship",
+    organization: "Pikiran Rakyat",
+    year: "2012-2013",
+    description: "Scholarship awardee for undergraduate studies.",
+    category: "Scholarship"
   }
 ];
 
@@ -63,10 +90,10 @@ const Awards = () => {
       
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-5xl font-extrabold text-white drop-shadow-neon mb-4">Awards & Recognition</motion.h2>
+          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-5xl font-extrabold text-white drop-shadow-neon mb-4">Achievements & Awards</motion.h2>
           <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="origin-left w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" />
           <p className="text-lg text-yellow-100 mt-6 max-w-3xl mx-auto">
-            Honored for contributions to environmental science, education, and sustainable development
+            Recognized for academic excellence, research contributions, and professional achievements
           </p>
         </div>
         
@@ -85,9 +112,20 @@ const Awards = () => {
                   <AwardIcon />
                 </motion.div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1 leading-tight drop-shadow-neon">
-                    {award.title}
-                  </h3>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-bold text-white leading-tight drop-shadow-neon">
+                      {award.title}
+                    </h3>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      award.category === 'Presentation' ? 'bg-yellow-400/20 text-yellow-300' :
+                      award.category === 'Research' ? 'bg-cyan-400/20 text-cyan-300' :
+                      award.category === 'Scholarship' ? 'bg-green-400/20 text-green-300' :
+                      award.category === 'Grant' ? 'bg-purple-400/20 text-purple-300' :
+                      'bg-pink-400/20 text-pink-300'
+                    }`}>
+                      {award.category}
+                    </span>
+                  </div>
                   <p className="text-yellow-200 font-medium text-sm">
                     {award.organization}
                   </p>

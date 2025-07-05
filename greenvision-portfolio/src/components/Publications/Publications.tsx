@@ -11,11 +11,44 @@ const NeonBlob = ({ className }: { className?: string }) => (
 const Publications = () => {
   const publications = [
     {
-      title: "Performa Model YOLOv8 untuk Deteksi Kondisi Mengantuk pada Pengendara Mobil",
-      journal: "Brahmana: Jurnal Penerapan Kecerdasan Buatan",
-      year: "2023",
-      doi: "N/A",
-      abstract: "Deep Learning-based YOLOv8 model was implemented to detect drowsiness in drivers using a dataset of 3708 images. It achieved high accuracy with mAP of 0.98055 and F1-score of 0.9496."
+      title: "Heavy metal contamination in swiftlet feathers: A comparative study of chromium and arsenic levels in industrial and non-industrial areas of East Java, Indonesia",
+      journal: "BIS Energy and Engineering",
+      year: "2025",
+      doi: "https://doi.org/10.31603/biseeng.348",
+      abstract: "A comparative study measuring chromium and arsenic concentrations in swiftlet feathers from industrial and non-industrial areas in East Java, showing bioaccumulation as a result of environmental pollution.",
+      authors: "Ikhwanussafa Sadidan, Sunu Kuntjoro, Nurul Amri Komarudin"
+    },
+    {
+      title: "Utilization of machine learning to predict the correlation between color of river water and other water quality characters",
+      journal: "Borobudur Symposium on IT & Computer Science",
+      year: "2024",
+      doi: "https://doi.org/10.31603/bistycs.136",
+      abstract: "Machine learning (SVR & DTR) used to analyze correlations between water color and other parameters like TDS, pH, DO, COD, and Fe in environmental monitoring.",
+      authors: "I Sadidan, GL Sari, EU Armin, FI Alifin, AR Budiarto"
+    },
+    {
+      title: "Sustainable Reconstruction Plan in Abrasion-Affected Areas",
+      journal: "BIS Health and Environmental Science",
+      year: "2024",
+      doi: "https://doi.org/10.31603/bishes.21",
+      abstract: "Case study in Karawang's northern coast proposing spatial planning and risk-based reconstruction after coastal erosion, dividing land into strategic development zones.",
+      authors: "AR Sugiarto, MR Fitrianto, I Sadidan, F Nurkhaerani, IP Sary"
+    },
+    {
+      title: "A Development of Deep Learning Approach to Estimate Blue Carbon Stock on Mangrove Habitats",
+      journal: "IEEE ICE3IS Conference Proceedings",
+      year: "2024",
+      doi: "10.1109/ICE3IS62977.2024.10775455",
+      abstract: "YOLOv8-based drone image analysis to estimate mangrove structure and blue carbon stock, with high precision results outperforming previous methods.",
+      authors: "Edmund U Armin, Fakhri I Alifin, Budi Arif Dermawan, Ikhwanussafa Sadidan"
+    },
+    {
+      title: "Exploring the Use of ChatGPT in Academic Assignments: Frequency, Benefits, and Perceptions among University Students",
+      journal: "IC-ITECHS Journal",
+      year: "2024",
+      doi: "https://doi.org/10.32664/ic-itechs.v5i1.1669",
+      abstract: "Mixed-methods study examining university students' usage patterns, benefits, and perceptions of ChatGPT in academic tasks, highlighting both utility and ethical concerns.",
+      authors: "Hasan Rabiev, Ikhwanussafa Sadidan, Novi Anthika Suci Nurhidayah"
     },
     {
       title: "Study of Physical and Chemical Properties of Drinking Water Sources on the Citarum River Irrigation Area in Karawang, West Java, Indonesia",
@@ -28,36 +61,8 @@ const Publications = () => {
       title: "Oil and Grease Contamination of Raw Water for Drinking Purposes in Karawang Regency, Indonesia",
       journal: "E3S Web of Conferences",
       year: "2024",
-      doi: "	https://doi.org/10.1051/e3sconf/202450002001",
+      doi: "https://doi.org/10.1051/e3sconf/202450002001",
       abstract: "The study detected oil, grease, and toxic metals in irrigation canals supplying drinking water, indicating pollution from industrial and domestic waste."
-    },
-    {
-      title: "Penilaian Status Mutu Air Sungai Citarum Menggunakan Metode Indeks Pencemaran",
-      journal: "Ruwa Jurai: Jurnal Kesehatan Lingkungan",
-      year: "2024",
-      doi: "https://doi.org/10.26630/rj.v18i2.4562",
-      abstract: "Using Pollution Index Method, this study evaluated water quality in Karawang's section of the Citarum River. Four parameters exceeded the permissible limit, classifying the water as \"Lightly Polluted.\""
-    },
-    {
-      title: "Pemanfaatan Machine Learning untuk Memprediksi Kandungan Dissolved Oxygen (DO) pada Air Sungai",
-      journal: "Brahmana: Jurnal Penerapan Kecerdasan Buatan",
-      year: "2023",
-      doi: "N/A",
-      abstract: "Machine Learning models (SVR and Decision Tree Regressor) were used to predict Dissolved Oxygen levels in the Citarum River. Decision Tree yielded better prediction accuracy."
-    },
-    {
-      title: "Edukasi Kesiapsiagaan Banjir ROB pada Masyarakat di Pesisir Pantai Utara Karawang",
-      journal: "Martabe: Jurnal Pengabdian Kepada Masyarakat",
-      year: "2023",
-      doi: "http://dx.doi.org/10.31604/jpm.v6i12.4490-4494",
-      abstract: "Flood preparedness education was provided to coastal communities in Karawang through pre- and post-surveys. The program improved awareness and readiness for tidal floods (ROB)."
-    },
-    {
-      title: "Faktor Sosial dan Budaya Kaitannya dengan Nilai Jual Kerbau (Kasus di Pasar Bolu, Kabupaten Toraja Utara)",
-      journal: "Students e-Journal",
-      year: "2015",
-      doi: "N/A",
-      abstract: "A qualitative case study exploring how social status, traditions, and cultural practices in Toraja influence the market value of buffaloes at Pasar Bolu."
     },
     {
       title: "Quality Improvement of Food Products Using Taguchi Method: A Study in a Bread Product SME",
@@ -106,9 +111,14 @@ const Publications = () => {
                 <p className="text-yellow-300 font-semibold mb-1">
                   {pub.journal}
                 </p>
-                <p className="text-cyan-300 text-sm mb-2">
+                <p className="text-cyan-300 text-sm mb-1">
                   {pub.year} • DOI: {pub.doi}
                 </p>
+                {pub.authors && (
+                  <p className="text-green-300 text-sm mb-2 font-medium">
+                    Authors: {pub.authors}
+                  </p>
+                )}
               </div>
               <p className="text-cyan-100 text-sm leading-relaxed">
                 {pub.abstract}

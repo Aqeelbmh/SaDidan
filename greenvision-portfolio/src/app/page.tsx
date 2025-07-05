@@ -1,6 +1,6 @@
 import Hero from "../components/Hero/Hero";
-import About from "../components/About/About";
 import Timeline from "../components/Timeline/Timeline";
+import Language from "../components/Language/Language";
 import Publications from "../components/Publications/Publications";
 import Projects from "../components/Projects/Projects";
 import Awards from "../components/Awards/Awards";
@@ -33,24 +33,24 @@ export default function Home() {
           <Hero />
         </section>
         <Divider />
-        <section id="about" className="py-20">
-          <About />
-        </section>
-        <Divider />
         <section id="timeline" className="py-20">
           <Timeline />
+        </section>
+        <Divider />
+        <section id="language" className="py-20">
+          <Language />
         </section>
         <Divider />
         <section id="publications" className="py-20">
           <Publications />
         </section>
         <Divider />
-        <section id="projects" className="py-20">
-          <Projects />
-        </section>
-        <Divider />
         <section id="awards" className="py-20">
           <Awards />
+        </section>
+        <Divider />
+        <section id="projects" className="py-20">
+          <Projects />
         </section>
         <Divider />
         <section id="gallery" className="py-20">

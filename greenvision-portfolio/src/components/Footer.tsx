@@ -15,27 +15,27 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/ikhwanussafa-sadidan",
+      url: "https://id.linkedin.com/in/sadidan-ikhwanussafa-9624b990",
       icon: "/LinkedInIcon.svg",
       color: "hover:bg-yellow-400/30"
+    },
+    {
+      name: "Instagram",
+      url: "https://instagram.com/sadidun",
+      icon: "/InstagramIcon.svg",
+      color: "hover:bg-pink-400/30"
+    },
+    {
+      name: "YouTube",
+      url: "https://youtube.com/@sadidan26",
+      icon: "/YouTubeIcon.svg",
+      color: "hover:bg-red-400/30"
     },
     {
       name: "Email",
       url: "mailto:ikhwanussafa@example.com",
       icon: "/EmailIcon.svg",
       color: "hover:bg-cyan-400/30"
-    },
-    {
-      name: "WhatsApp",
-      url: "https://wa.me/1234567890",
-      icon: "/WhatsAppIcon.svg",
-      color: "hover:bg-green-400/30"
-    },
-    {
-      name: "Instagram",
-      url: "https://instagram.com/ikhwanussafa",
-      icon: "/InstagramIcon.svg",
-      color: "hover:bg-pink-400/30"
     }
   ];
 
