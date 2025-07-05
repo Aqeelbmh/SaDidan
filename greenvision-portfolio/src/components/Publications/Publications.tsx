@@ -11,46 +11,67 @@ const NeonBlob = ({ className }: { className?: string }) => (
 const Publications = () => {
   const publications = [
     {
-      title: "Environmental Impact Assessment of Urban Development",
-      journal: "Environmental Science & Technology",
+      title: "Performa Model YOLOv8 untuk Deteksi Kondisi Mengantuk pada Pengendara Mobil",
+      journal: "Brahmana: Jurnal Penerapan Kecerdasan Buatan",
       year: "2023",
-      doi: "10.1000/xyz123",
-      abstract: "Comprehensive analysis of urban development impacts on local ecosystems and biodiversity."
+      doi: "N/A",
+      abstract: "Deep Learning-based YOLOv8 model was implemented to detect drowsiness in drivers using a dataset of 3708 images. It achieved high accuracy with mAP of 0.98055 and F1-score of 0.9496."
     },
     {
-      title: "GIS Applications in Environmental Monitoring",
-      journal: "Journal of Environmental Management",
-      year: "2022",
-      doi: "10.1000/abc456",
-      abstract: "Innovative use of Geographic Information Systems for real-time environmental monitoring."
+      title: "Study of Physical and Chemical Properties of Drinking Water Sources on the Citarum River Irrigation Area in Karawang, West Java, Indonesia",
+      journal: "E3S Web of Conferences",
+      year: "2024",
+      doi: "https://doi.org/10.1051/e3sconf/202450002002",
+      abstract: "Assessment of 33 water samples showed high pollution levels in the Citarum River. Chemical tests revealed excessive turbidity and iron content above national standards."
     },
     {
-      title: "AI-Driven Pollution Prediction Models",
-      journal: "Environmental Research",
-      year: "2022",
-      doi: "10.1000/def789",
-      abstract: "Machine learning approaches for predicting environmental pollution patterns and trends."
+      title: "Oil and Grease Contamination of Raw Water for Drinking Purposes in Karawang Regency, Indonesia",
+      journal: "E3S Web of Conferences",
+      year: "2024",
+      doi: "	https://doi.org/10.1051/e3sconf/202450002001",
+      abstract: "The study detected oil, grease, and toxic metals in irrigation canals supplying drinking water, indicating pollution from industrial and domestic waste."
     },
     {
-      title: "Sustainable Development in Coastal Regions",
-      journal: "Coastal Management",
-      year: "2021",
-      doi: "10.1000/ghi012",
-      abstract: "Balancing economic development with environmental conservation in coastal ecosystems."
+      title: "Penilaian Status Mutu Air Sungai Citarum Menggunakan Metode Indeks Pencemaran",
+      journal: "Ruwa Jurai: Jurnal Kesehatan Lingkungan",
+      year: "2024",
+      doi: "https://doi.org/10.26630/rj.v18i2.4562",
+      abstract: "Using Pollution Index Method, this study evaluated water quality in Karawang's section of the Citarum River. Four parameters exceeded the permissible limit, classifying the water as \"Lightly Polluted.\""
     },
     {
-      title: "Climate Change Adaptation Strategies",
-      journal: "Climate Policy",
-      year: "2021",
-      doi: "10.1000/jkl345",
-      abstract: "Effective strategies for communities to adapt to changing climate conditions."
+      title: "Pemanfaatan Machine Learning untuk Memprediksi Kandungan Dissolved Oxygen (DO) pada Air Sungai",
+      journal: "Brahmana: Jurnal Penerapan Kecerdasan Buatan",
+      year: "2023",
+      doi: "N/A",
+      abstract: "Machine Learning models (SVR and Decision Tree Regressor) were used to predict Dissolved Oxygen levels in the Citarum River. Decision Tree yielded better prediction accuracy."
     },
     {
-      title: "Biodiversity Conservation in Urban Areas",
-      journal: "Urban Ecology",
-      year: "2020",
-      doi: "10.1000/mno678",
-      abstract: "Methods for preserving biodiversity within rapidly urbanizing environments."
+      title: "Edukasi Kesiapsiagaan Banjir ROB pada Masyarakat di Pesisir Pantai Utara Karawang",
+      journal: "Martabe: Jurnal Pengabdian Kepada Masyarakat",
+      year: "2023",
+      doi: "http://dx.doi.org/10.31604/jpm.v6i12.4490-4494",
+      abstract: "Flood preparedness education was provided to coastal communities in Karawang through pre- and post-surveys. The program improved awareness and readiness for tidal floods (ROB)."
+    },
+    {
+      title: "Faktor Sosial dan Budaya Kaitannya dengan Nilai Jual Kerbau (Kasus di Pasar Bolu, Kabupaten Toraja Utara)",
+      journal: "Students e-Journal",
+      year: "2015",
+      doi: "N/A",
+      abstract: "A qualitative case study exploring how social status, traditions, and cultural practices in Toraja influence the market value of buffaloes at Pasar Bolu."
+    },
+    {
+      title: "Quality Improvement of Food Products Using Taguchi Method: A Study in a Bread Product SME",
+      journal: "Vol Journal",
+      year: "Unknown",
+      doi: "N/A",
+      abstract: "A Taguchi method-based study conducted at a bread SME in Bandung to identify and optimize factors contributing to defective Kadet bread. The research achieved improved process design and reduced product defects using Analysis of Variance."
+    },
+    {
+      title: "Road Condition Monitoring with Drones and LiDAR in Infrastructure Technology",
+      journal: "Semesta Teknika",
+      year: "2025",
+      doi: "https://doi.org/10.18196/st.v28i1.25170",
+      abstract: "This study uses drone-based LiDAR technology for road condition monitoring in Karawang, Indonesia. It achieved 93.7% accuracy in detecting road damage and validated the effectiveness of drone-LiDAR systems for efficient infrastructure assessment and predictive maintenance."
     }
   ];
 
@@ -109,9 +130,14 @@ const Publications = () => {
             <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
               Currently working on new research projects focusing on AI applications in environmental monitoring and sustainable urban development.
             </p>
-            <button className="px-6 py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn">
+            <a 
+              href="https://scholar.google.com/citations?user=7Zu5XFUAAAAJ&hl=en" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn"
+            >
               View All Publications
-            </button>
+            </a>
           </div>
         </div>
       </div>
