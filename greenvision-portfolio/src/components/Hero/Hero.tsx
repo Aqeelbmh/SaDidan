@@ -39,21 +39,17 @@ const Hero: React.FC = () => {
                 <span className="text-white">, M.Sc.</span>
               </h1>
               <p className="text-xl sm:text-2xl text-yellow-100 font-medium">
-                Environmental Lecturer & Consultant
+                Ecology & Environmental Management
               </p>
             </div>
 
             {/* Description */}
             <div className="space-y-4">
               <p className="text-lg text-cyan-100 leading-relaxed max-w-2xl">
-                A passionate environmental lecturer and consultant dedicated to sustainability and ecological innovation. 
-                With an academic foundation in Environmental Management from Tomsk Polytechnic University (Russia) and 
-                years of teaching and consulting experience, I aim to inspire change through science and education.
+                A passionate university lecturer and researcher dedicated to sustainability and ecological innovation. With an academic foundation in Ecology and Environmental Management from Tomsk Polytechnic University (Russia) and years of teaching, researching, and consulting experience, I aim to inspire change through science and education.
               </p>
               <p className="text-lg text-cyan-100 leading-relaxed max-w-2xl">
-                My research focuses on environmental pollution, Geographic Information Systems (GIS), and the integration 
-                of Artificial Intelligence in ecological analysis. I currently serve as a lecturer in Environmental 
-                Engineering at Universitas Singaperbangsa Karawang (UNSIKA), where I also coordinate international collaborations.
+                My research focuses on environmental pollution, Geographic Information Systems (GIS), and the integration of Artificial Intelligence in ecological analysis. I currently serve as a lecturer in Faculty of Engineering at Universitas Singaperbangsa Karawang (UNSIKA), where I also responsible to coordinate international collaborations and affairs.
               </p>
               <p className="text-lg text-green-400 font-semibold">
                 Let&apos;s work together to build a healthier, greener planet.
@@ -126,7 +122,7 @@ const Hero: React.FC = () => {
               
               {/* Quick info */}
               <div className="mt-6 text-center space-y-2">
-                <h3 className="text-xl font-semibold text-white">Environmental Lecturer</h3>
+                <h3 className="text-xl font-semibold text-white">Lecturer of Environmental Engineering Study Program</h3>
                 <p className="text-cyan-100">Universitas Singaperbangsa Karawang (UNSIKA)</p>
                 <div className="flex flex-wrap justify-center gap-2 mt-4">
                   <span className="px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-sm">GIS</span>

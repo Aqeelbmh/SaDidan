@@ -40,7 +40,6 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Publications", href: "#publications" },
     { name: "Contact", href: "#contact" }
@@ -67,7 +66,7 @@ const Footer = () => {
               Ikhwanussafa Sadidan, M.Sc.
             </h3>
             <p className="text-cyan-200 mb-4 leading-relaxed">
-              Environmental lecturer, consultant, and researcher dedicated to sustainable development and environmental conservation. 
+              Lecturer of Environmental Engineering Study Program, consultant, and researcher dedicated to sustainable development and environmental conservation. 
               Specializing in environmental impact assessment, biodiversity conservation, and climate adaptation strategies.
             </p>
             <div className="flex space-x-4">

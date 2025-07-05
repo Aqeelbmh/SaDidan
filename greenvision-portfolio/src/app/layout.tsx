@@ -17,10 +17,10 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://greenvision-portfolio.vercel.app"),
   title: "Ikhwanussafa Sadidan | Environmental Scientist, Lecturer & Consultant",
-  description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Environmental lecturer, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
+  description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Lecturer of Environmental Engineering Study Program, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
   openGraph: {
     title: "Ikhwanussafa Sadidan | Environmental Scientist, Lecturer & Consultant",
-    description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Environmental lecturer, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
+    description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Lecturer of Environmental Engineering Study Program, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
     url: "https://greenvision-portfolio.vercel.app/",
     siteName: "Ikhwanussafa Sadidan Portfolio",
     locale: "en_US",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ikhwanussafa Sadidan | Environmental Scientist, Lecturer & Consultant",
-    description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Environmental lecturer, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
+    description: "Portfolio of Ikhwanussafa Sadidan, M.Sc. — Lecturer of Environmental Engineering Study Program, consultant, and researcher specializing in ecology, GIS, environmental management, and sustainability. Explore research, projects, awards, and more.",
     creator: "@yourtwitterhandle"
   },
 };

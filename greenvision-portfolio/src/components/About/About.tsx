@@ -37,13 +37,13 @@ const About = () => {
           
           <div className="space-y-8">
             <div className="glass neon-border shadow-neon rounded-2xl p-10">
-              <h3 className="text-2xl font-bold neon-text mb-4">Environmental Lecturer & Consultant</h3>
+              <h3 className="text-2xl font-bold neon-text mb-4">Ecology & Environmental Management</h3>
               <div className="space-y-4 text-cyan-100 leading-relaxed">
                 <p>
-                  Hello! I&apos;m Ikhwanussafa Sadidan, M.Sc., a passionate environmental lecturer and consultant dedicated to sustainability and ecological innovation. With an academic foundation in Environmental Management from Tomsk Polytechnic University (Russia) and years of teaching and consulting experience, I aim to inspire change through science and education.
+                  Hello! I&apos;m Ikhwanussafa Sadidan, M.Sc., a passionate university lecturer and researcher dedicated to sustainability and ecological innovation. With an academic foundation in Ecology and Environmental Management from Tomsk Polytechnic University (Russia) and years of teaching, researching, and consulting experience, I aim to inspire change through science and education.
                 </p>
                 <p>
-                  My research focuses on environmental pollution, Geographic Information Systems (GIS), and the integration of Artificial Intelligence in ecological analysis. I currently serve as a lecturer in Environmental Engineering at Universitas Singaperbangsa Karawang (UNSIKA), where I also coordinate international collaborations.
+                  My research focuses on environmental pollution, Geographic Information Systems (GIS), and the integration of Artificial Intelligence in ecological analysis. I currently serve as a lecturer in Faculty of Engineering at Universitas Singaperbangsa Karawang (UNSIKA), where I also responsible to coordinate international collaborations and affairs.
                 </p>
                 <p className="font-semibold text-neon-green">
                   Let&apos;s work together to build a healthier, greener planet.
