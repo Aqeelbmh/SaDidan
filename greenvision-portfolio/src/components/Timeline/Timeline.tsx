@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
-
 const GraduationIcon = () => (
   <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-yellow-400">
     <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -117,18 +115,18 @@ const Timeline = () => {
   const currentData = activeTab === 'education' ? education : experience;
 
   return (
-    <section className="relative w-full py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
       {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-72 h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-60 h-60" />
+      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
+      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
       
-      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="relative z-20 container-responsive">
+        <div className="text-center mb-12 sm:mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 40 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.7 }} 
-            className="text-5xl font-extrabold text-white drop-shadow-neon mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
           >
             My Journey So Far
           </motion.h2>
@@ -136,38 +134,40 @@ const Timeline = () => {
             initial={{ scaleX: 0 }} 
             animate={{ scaleX: 1 }} 
             transition={{ duration: 0.7, delay: 0.2 }} 
-            className="origin-left w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
+            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
           />
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex justify-center mb-12">
-          <div className="glass neon-border rounded-2xl p-2 backdrop-blur-xl">
-            <div className="flex space-x-2">
+        <div className="flex justify-center mb-8 sm:mb-12">
+          <div className="glass neon-border rounded-2xl p-1 sm:p-2 backdrop-blur-xl w-full max-w-md">
+            <div className="flex space-x-1 sm:space-x-2">
               <button
                 onClick={() => setActiveTab('education')}
-                className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`flex-1 px-4 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base touch-friendly ${
                   activeTab === 'education'
                     ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-white shadow-lg shadow-yellow-400/25'
                     : 'text-yellow-300 hover:text-yellow-200 hover:bg-white/10'
                 }`}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-1 sm:gap-2">
                   <GraduationIcon />
-                  Education
+                  <span className="hidden sm:inline">Education</span>
+                  <span className="sm:hidden">Edu</span>
                 </span>
               </button>
               <button
                 onClick={() => setActiveTab('experience')}
-                className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`flex-1 px-4 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base touch-friendly ${
                   activeTab === 'experience'
                     ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-white shadow-lg shadow-cyan-400/25'
                     : 'text-cyan-300 hover:text-cyan-200 hover:bg-white/10'
                 }`}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-1 sm:gap-2">
                   <BriefcaseIcon />
-                  Experience
+                  <span className="hidden sm:inline">Experience</span>
+                  <span className="sm:hidden">Exp</span>
                 </span>
               </button>
             </div>
@@ -176,7 +176,8 @@ const Timeline = () => {
 
         {/* Timeline Content */}
         <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-300/30 via-cyan-400/30 to-green-400/30 rounded-full"></div>
+          {/* Desktop Timeline Line */}
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-300/30 via-cyan-400/30 to-green-400/30 rounded-full"></div>
           
           <AnimatePresence mode="wait">
             <motion.div
@@ -185,7 +186,7 @@ const Timeline = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               {currentData.map((item, index) => (
                 <motion.div
@@ -193,31 +194,41 @@ const Timeline = () => {
                   initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+                  className={`relative flex items-center ${
+                    index % 2 === 0 ? 'justify-start' : 'justify-end'
+                  } lg:${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
                 >
                   {/* Timeline Item */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className="glass neon-border rounded-2xl p-6 backdrop-blur-xl shadow-neon hover:scale-105 transition-transform duration-300">
+                  <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}>
+                    <div className="glass neon-border rounded-2xl p-4 sm:p-6 backdrop-blur-xl shadow-neon hover:scale-105 transition-transform duration-300">
+                      {/* Timeline Dot */}
+                      <div className="absolute top-1/2 transform -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-yellow-300 to-cyan-400 rounded-full border-4 border-white shadow-lg hidden lg:block"></div>
+                      
                       <div className="flex items-start gap-4">
-                        <div className={`p-3 rounded-xl bg-gradient-to-r ${item.color} shadow-lg`}>
+                        <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0`}>
                           {item.icon}
                         </div>
-                        <div className="flex-1">
-                          <h4 className="text-xl font-semibold text-white mb-2 drop-shadow-neon">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="text-sm sm:text-base font-semibold text-yellow-300 bg-yellow-400/10 px-2 py-1 rounded-full">
+                              {item.year}
+                            </span>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-tight">
                             {item.title}
-                          </h4>
-                          <p className="text-yellow-200 font-medium mb-1">{item.place}</p>
-                          <p className="text-sm text-yellow-100 mb-2">{item.year}</p>
+                          </h3>
+                          <p className="text-cyan-300 font-medium mb-2 text-sm sm:text-base">
+                            {item.place}
+                          </p>
                           {item.details && (
-                            <p className="text-sm text-cyan-100 leading-relaxed">{item.details}</p>
+                            <p className="text-cyan-100 text-sm leading-relaxed">
+                              {item.details}
+                            </p>
                           )}
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-yellow-300 to-cyan-400 rounded-full shadow-neon border-2 border-white"></div>
                 </motion.div>
               ))}
             </motion.div>

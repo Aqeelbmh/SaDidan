@@ -81,43 +81,55 @@ const Publications = () => {
   ];
 
   return (
-    <section className="relative w-full py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
       {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-72 h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-60 h-60" />
+      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
+      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
       
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-5xl font-extrabold text-white drop-shadow-neon mb-4">Publications</motion.h2>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="origin-left w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" />
-          <p className="text-lg text-yellow-100 mt-6 max-w-3xl mx-auto">
+      <div className="relative z-20 container-responsive">
+        <div className="text-center mb-12 sm:mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 40 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.7 }} 
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
+          >
+            Publications
+          </motion.h2>
+          <motion.div 
+            initial={{ scaleX: 0 }} 
+            animate={{ scaleX: 1 }} 
+            transition={{ duration: 0.7, delay: 0.2 }} 
+            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
+          />
+          <p className="text-base sm:text-lg text-yellow-100 mt-4 sm:mt-6 max-w-3xl mx-auto px-4">
             Contributing to environmental science through rigorous research and impactful publications
           </p>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {publications.map((pub, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.1 }}
-              className="glass neon-border rounded-2xl p-8 shadow-neon hover:scale-105 transition-transform duration-300"
+              className="glass neon-border rounded-2xl p-6 sm:p-8 shadow-neon hover:scale-105 transition-transform duration-300"
             >
               <div className="mb-4">
-                <h3 className="text-xl font-bold text-white mb-2 drop-shadow-neon">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 drop-shadow-neon leading-tight">
                   {pub.title}
                 </h3>
-                <p className="text-yellow-300 font-semibold mb-1">
+                <p className="text-yellow-300 font-semibold mb-1 text-sm sm:text-base">
                   {pub.journal}
                 </p>
-                <p className="text-cyan-300 text-sm mb-1">
+                <p className="text-cyan-300 text-xs sm:text-sm mb-1">
                   {pub.year} • DOI: {pub.doi !== "N/A" ? (
                     <a 
                       href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-200"
+                      className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-200 break-all"
                     >
                       {pub.doi}
                     </a>
@@ -126,12 +138,12 @@ const Publications = () => {
                   )}
                 </p>
                 {pub.authors && (
-                  <p className="text-green-300 text-sm mb-2 font-medium">
+                  <p className="text-green-300 text-xs sm:text-sm mb-2 font-medium">
                     Authors: {pub.authors}
                   </p>
                 )}
               </div>
-              <p className="text-cyan-100 text-sm leading-relaxed">
+              <p className="text-cyan-100 text-xs sm:text-sm leading-relaxed mb-4">
                 {pub.abstract}
               </p>
               <div className="mt-4 pt-4 border-t border-yellow-300/20">
@@ -140,7 +152,7 @@ const Publications = () => {
                     href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-yellow-300 hover:text-yellow-200 text-sm font-medium transition-colors duration-200 hover:underline inline-flex items-center"
+                    className="text-yellow-300 hover:text-yellow-200 text-sm font-medium transition-colors duration-200 hover:underline inline-flex items-center touch-friendly"
                   >
                     Read Full Paper →
                   </a>
@@ -154,19 +166,19 @@ const Publications = () => {
           ))}
         </div>
         
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-white/10 to-yellow-300/10 rounded-xl p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20">
-            <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-neon">
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="bg-gradient-to-r from-white/10 to-yellow-300/10 rounded-xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 drop-shadow-neon">
               More Research Coming Soon
             </h3>
-            <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-yellow-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
               Currently working on new research projects focusing on AI applications in environmental monitoring and sustainable urban development.
             </p>
             <a 
               href="https://scholar.google.com/citations?user=7Zu5XFUAAAAJ&hl=en" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn touch-friendly"
             >
               View All Publications
             </a>
