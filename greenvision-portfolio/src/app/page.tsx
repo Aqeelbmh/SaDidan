@@ -10,7 +10,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Divider = () => (
-  <div className="w-full flex justify-center items-center my-0">
+  <div className="w-full flex justify-center items-center">
     <svg height="48" width="100%" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
       <path d="M0 24 Q 360 48 720 24 T 1440 24 V48 H0V24Z" fill="url(#neon-gradient)" opacity="0.7" />
       <defs>
@@ -28,36 +28,36 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="pt-20">
-        <section id="hero" className="min-h-screen flex items-center justify-center">
+      <main>
+        <section id="hero">
           <Hero />
         </section>
         <Divider />
-        <section id="timeline" className="py-20">
+        <section id="timeline">
           <Timeline />
         </section>
         <Divider />
-        <section id="language" className="py-20">
+        <section id="language">
           <Language />
         </section>
         <Divider />
-        <section id="publications" className="py-20">
+        <section id="publications">
           <Publications />
         </section>
         <Divider />
-        <section id="awards" className="py-20">
+        <section id="awards">
           <Awards />
         </section>
         <Divider />
-        <section id="projects" className="py-20">
+        <section id="projects">
           <Projects />
         </section>
         <Divider />
-        <section id="gallery" className="py-20">
+        <section id="gallery">
           <Gallery />
         </section>
         <Divider />
-        <section id="contact" className="py-20">
+        <section id="contact">
           <Contact />
         </section>
       </main>

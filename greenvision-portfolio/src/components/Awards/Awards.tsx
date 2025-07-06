@@ -83,21 +83,33 @@ const NeonBlob = ({ className }: { className?: string }) => (
 
 const Awards = () => {
   return (
-    <section className="relative w-full py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
       {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-72 h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-60 h-60" />
+      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
+      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
       
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-5xl font-extrabold text-white drop-shadow-neon mb-4">Achievements & Awards</motion.h2>
-          <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="origin-left w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" />
-          <p className="text-lg text-yellow-100 mt-6 max-w-3xl mx-auto">
+      <div className="relative z-20 container-responsive">
+        <div className="text-center mb-12 sm:mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 40 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.7 }} 
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
+          >
+            Achievements & Awards
+          </motion.h2>
+          <motion.div 
+            initial={{ scaleX: 0 }} 
+            animate={{ scaleX: 1 }} 
+            transition={{ duration: 0.7, delay: 0.2 }} 
+            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
+          />
+          <p className="text-base sm:text-lg text-yellow-100 mt-4 sm:mt-6 max-w-3xl mx-auto px-4">
             Recognized for academic excellence, research contributions, and professional achievements
           </p>
         </div>
         
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {awards.map((award, index) => (
             <motion.div
               key={index}
@@ -105,18 +117,22 @@ const Awards = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/10 rounded-2xl p-8 border border-yellow-300/30 hover:shadow-neon transition-all duration-300 hover:-translate-y-2 group flex flex-col backdrop-blur-xl glassmorphism neon-glow"
+              className="bg-white/10 rounded-2xl p-6 sm:p-8 border border-yellow-300/30 hover:shadow-neon transition-all duration-300 hover:-translate-y-2 group flex flex-col backdrop-blur-xl glassmorphism neon-glow"
             >
-              <div className="flex items-start space-x-4 mb-4">
-                <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ repeat: Infinity, duration: 2, repeatType: 'loop' }} className="flex-shrink-0 w-12 h-12 flex items-center justify-center drop-shadow-neon">
+              <div className="flex items-start space-x-3 sm:space-x-4 mb-4">
+                <motion.div 
+                  animate={{ scale: [1, 1.15, 1] }} 
+                  transition={{ repeat: Infinity, duration: 2, repeatType: 'loop' }} 
+                  className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center drop-shadow-neon"
+                >
                   <AwardIcon />
                 </motion.div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-white leading-tight drop-shadow-neon">
+                    <h3 className="text-base sm:text-lg font-bold text-white leading-tight drop-shadow-neon">
                       {award.title}
                     </h3>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
                       award.category === 'Presentation' ? 'bg-yellow-400/20 text-yellow-300' :
                       award.category === 'Research' ? 'bg-cyan-400/20 text-cyan-300' :
                       award.category === 'Scholarship' ? 'bg-green-400/20 text-green-300' :
@@ -138,7 +154,7 @@ const Awards = () => {
                 {award.description}
               </p>
               <div className="mt-auto pt-4 border-t border-yellow-300/20">
-                <button className="w-full px-4 py-2 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm liquid-btn">
+                <button className="w-full px-4 py-2 sm:py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm liquid-btn touch-friendly">
                   View Certificate
                 </button>
               </div>
@@ -146,15 +162,15 @@ const Awards = () => {
           ))}
         </div>
         
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-white/10 to-yellow-300/10 rounded-xl p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20">
-            <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-neon">
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="bg-gradient-to-r from-white/10 to-yellow-300/10 rounded-xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 drop-shadow-neon">
               Let&apos;s Work Together
             </h3>
-            <p className="text-yellow-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-yellow-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
               Ready to collaborate on environmental projects that make a difference? Let&apos;s discuss how we can work together to create sustainable solutions.
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn touch-friendly">
               Get In Touch
             </button>
           </div>
