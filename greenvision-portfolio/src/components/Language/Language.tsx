@@ -58,9 +58,6 @@ const Language = () => {
                   <h3 className="text-lg sm:text-xl font-semibold text-white drop-shadow-neon">
                     {language.name}
                   </h3>
-                  <span className="text-yellow-300 font-bold text-base sm:text-lg">
-                    {language.percentage}%
-                  </span>
                 </div>
                 
                 <div className="relative h-3 sm:h-4 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
