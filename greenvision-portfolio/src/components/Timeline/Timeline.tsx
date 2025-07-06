@@ -3,12 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LeafIcon = () => (
-  <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-leaf">
-    <path d="M12 2C17 8 22 12 12 22C2 12 7 8 12 2Z" fill="#A3C585" fillOpacity="0.3"/>
-    <path d="M12 2C17 8 22 12 12 22C2 12 7 8 12 2Z" stroke="#6CBF84" strokeWidth="1.5" fill="none"/>
-  </svg>
-);
+
 
 const GraduationIcon = () => (
   <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-yellow-400">
