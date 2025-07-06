@@ -112,7 +112,18 @@ const Publications = () => {
                   {pub.journal}
                 </p>
                 <p className="text-cyan-300 text-sm mb-1">
-                  {pub.year} • DOI: {pub.doi}
+                  {pub.year} • DOI: {pub.doi !== "N/A" ? (
+                    <a 
+                      href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-200"
+                    >
+                      {pub.doi}
+                    </a>
+                  ) : (
+                    "N/A"
+                  )}
                 </p>
                 {pub.authors && (
                   <p className="text-green-300 text-sm mb-2 font-medium">
@@ -124,9 +135,20 @@ const Publications = () => {
                 {pub.abstract}
               </p>
               <div className="mt-4 pt-4 border-t border-yellow-300/20">
-                <button className="text-yellow-300 hover:text-yellow-200 text-sm font-medium transition-colors duration-200">
-                  Read Full Paper →
-                </button>
+                {pub.doi !== "N/A" ? (
+                  <a 
+                    href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-yellow-300 hover:text-yellow-200 text-sm font-medium transition-colors duration-200 hover:underline inline-flex items-center"
+                  >
+                    Read Full Paper →
+                  </a>
+                ) : (
+                  <span className="text-gray-400 text-sm font-medium">
+                    Paper not available online
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}
