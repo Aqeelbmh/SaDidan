@@ -134,13 +134,13 @@ const Footer = () => {
           className="border-t border-yellow-300/20 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <div className="text-cyan-100 text-sm mb-4 md:mb-0 text-center md:text-left">
-            © {currentYear} Ikhwanussafa Sadidan. All rights reserved.
+            © {currentYear} H.K Freelance Studio. All rights reserved.
           </div>
           <div className="flex space-x-4 sm:space-x-6">
-            <a href="#" className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly">
+            <a href="/Privacy Policy_h.k.pdf" target="_blank" rel="noopener noreferrer" className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly">
               Privacy Policy
             </a>
-            <a href="#" className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly">
+            <a href="/Terms of Service_hk.pdf" target="_blank" rel="noopener noreferrer" className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly">
               Terms of Service
             </a>
           </div>
