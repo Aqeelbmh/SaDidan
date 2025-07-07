@@ -128,7 +128,7 @@ const Timeline = () => {
             transition={{ duration: 0.7 }} 
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
           >
-            My Journey So Far
+            My Journey
           </motion.h2>
           <motion.div 
             initial={{ scaleX: 0 }} 
@@ -203,7 +203,6 @@ const Timeline = () => {
                     <div className="glass neon-border rounded-2xl p-4 sm:p-6 backdrop-blur-xl shadow-neon hover:scale-105 transition-transform duration-300">
                       {/* Timeline Dot */}
                       <div className="absolute top-1/2 transform -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-yellow-300 to-cyan-400 rounded-full border-4 border-white shadow-lg hidden lg:block"></div>
-                      
                       <div className="flex items-start gap-4">
                         <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r ${item.color} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0`}>
                           {item.icon}
