@@ -95,9 +95,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo/Brand */}
             <div className="flex items-center">
-              <span className="text-xl sm:text-2xl font-bold text-white">
-                Sadidan
-              </span>
+              {/* Removed 'Sadidan' brand text for a cleaner navbar */}
             </div>
 
             {/* Desktop Navigation */}
