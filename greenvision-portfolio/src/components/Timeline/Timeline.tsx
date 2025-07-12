@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { api, TimelineItem } from "@/lib/api";
 
 const GraduationIcon = () => (
   <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-yellow-400">
@@ -26,8 +27,11 @@ const NeonBlob = ({ className }: { className?: string }) => (
 
 const Timeline = () => {
   const [activeTab, setActiveTab] = useState<'education' | 'experience'>('education');
+  const [timelineData, setTimelineData] = useState<TimelineItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const education = [
+  // Fallback data
+  const fallbackEducation = [
     {
       year: '2011–2015',
       icon: <GraduationIcon />,
@@ -53,7 +57,7 @@ const Timeline = () => {
     },
   ];
 
-  const experience = [
+  const fallbackExperience = [
     {
       year: '2022–Present',
       icon: <BriefcaseIcon />,
@@ -112,7 +116,28 @@ const Timeline = () => {
     },
   ];
 
-  const currentData = activeTab === 'education' ? education : experience;
+  useEffect(() => {
+    // Only fetch from API if running on localhost (development)
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      (async () => {
+        try {
+          const data = await api.timeline();
+          setTimelineData(data);
+        } catch (error) {
+          setTimelineData([]);
+        } finally {
+          setLoading(false);
+        }
+      })();
+    } else {
+      // In production or static export, always use fallback data and never call the API
+      setTimelineData([]); // fallback data is used below
+      setLoading(false);
+    }
+  }, []);
+
+  // Always use fallback data in production/static export
+  const currentData = activeTab === 'education' ? fallbackEducation : fallbackExperience;
 
   return (
     <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
@@ -137,7 +162,7 @@ const Timeline = () => {
             className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
           />
         </div>
-
+        
         {/* Filter Buttons */}
         <div className="flex justify-center mb-8 sm:mb-12">
           <div className="glass neon-border rounded-2xl p-1 sm:p-2 backdrop-blur-xl w-full max-w-md">
@@ -173,7 +198,7 @@ const Timeline = () => {
             </div>
           </div>
         </div>
-
+          
         {/* Timeline Content */}
         <div className="relative">
           {/* Desktop Timeline Line */}
@@ -219,11 +244,11 @@ const Timeline = () => {
                           <p className="text-cyan-300 font-medium mb-2 text-sm sm:text-base">
                             {item.place}
                           </p>
-                          {item.details && (
+                    {item.details && (
                             <p className="text-cyan-100 text-sm leading-relaxed">
                               {item.details}
                             </p>
-                          )}
+                    )}
                         </div>
                       </div>
                     </div>

@@ -154,7 +154,7 @@ const Publications = () => {
                     rel="noopener noreferrer"
                     className="text-yellow-300 hover:text-yellow-200 text-sm font-medium transition-colors duration-200 hover:underline inline-flex items-center touch-friendly"
                   >
-                    Read Full Paper →
+                  Read Full Paper →
                   </a>
                 ) : (
                   <span className="text-gray-400 text-sm font-medium">

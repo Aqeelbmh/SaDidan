@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "title": "Research Paper Title",
+    "authors": "Your Name, Co-author",
+    "journal": "Journal Name",
+    "year": "2023",
+    "doi": "10.1000/example",
+    "link": "https://example.com"
+  }
+]

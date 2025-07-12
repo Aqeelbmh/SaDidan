@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Portfolio Website",
+    "description": "A modern portfolio website built with Next.js and Tailwind CSS.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "githubUrl": "https://github.com/username/portfolio",
+    "liveUrl": "https://portfolio.com",
+    "imageUrl": "/projects/portfolio.jpg"
+  }
+]

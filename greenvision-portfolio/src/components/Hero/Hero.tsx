@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Image from "next/image";
+import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 const Hero: React.FC = () => {
   const handleDownloadCV = () => {
@@ -73,10 +74,10 @@ const Hero: React.FC = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-start">
               <button 
                 onClick={handleDownloadCV}
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25 touch-friendly"
+                className="group relative px-4 py-2 text-sm bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25 touch-friendly"
               >
                 <span className="flex items-center justify-center gap-2">
                   🟢 Download CV
@@ -84,14 +85,14 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               </button>
               
-              <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-300 hover:to-cyan-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 touch-friendly">
+              <button className="group relative px-4 py-2 text-sm bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-300 hover:to-cyan-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 touch-friendly">
                 <span className="flex items-center justify-center gap-2">
                   🌍 Explore My Work
                 </span>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-300 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               </button>
               
-              <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 touch-friendly">
+              <button className="group relative px-4 py-2 text-sm bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 touch-friendly">
                 <span className="flex items-center justify-center gap-2">
                   📬 Contact Me
                 </span>
@@ -101,7 +102,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right side - Profile card */}
-          <div className="relative order-first lg:order-last">
+          <div className="relative order-first lg:order-last -mt-10 sm:-mt-14 lg:-translate-y-24">
             <div className="backdrop-blur-md bg-white/10 border border-yellow-300/20 rounded-2xl p-6 sm:p-8 shadow-2xl max-w-sm mx-auto lg:max-w-none">
               <div className="relative">
                 {/* Profile image */}
@@ -131,6 +132,25 @@ const Hero: React.FC = () => {
                   <span className="px-2 sm:px-3 py-1 bg-green-400/20 text-green-300 rounded-full text-xs sm:text-sm">Pollution</span>
                   <span className="px-2 sm:px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-xs sm:text-sm">Research</span>
                 </div>
+              </div>
+
+              {/* Social Media Icons */}
+              <div className="flex justify-center gap-4 mt-4">
+                <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <FaFacebook className="w-7 h-7 text-[#1877F3] hover:scale-110 hover:text-blue-500 transition-transform" />
+                </a>
+                <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <FaInstagram className="w-7 h-7 text-[#E4405F] hover:scale-110 hover:text-pink-500 transition-transform" />
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <FaLinkedin className="w-7 h-7 text-[#0A66C2] hover:scale-110 hover:text-blue-700 transition-transform" />
+                </a>
+                <a href="https://wa.me/yourwhatsapplink" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  <FaWhatsapp className="w-7 h-7 text-[#25D366] hover:scale-110 hover:text-green-500 transition-transform" />
+                </a>
+                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <FaYoutube className="w-7 h-7 text-[#FF0000] hover:scale-110 hover:text-red-600 transition-transform" />
+                </a>
               </div>
             </div>
           </div>

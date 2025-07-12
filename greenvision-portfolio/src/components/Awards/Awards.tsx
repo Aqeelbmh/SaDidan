@@ -130,8 +130,8 @@ const Awards = () => {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-base sm:text-lg font-bold text-white leading-tight drop-shadow-neon">
-                      {award.title}
-                    </h3>
+                    {award.title}
+                  </h3>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
                       award.category === 'Presentation' ? 'bg-yellow-400/20 text-yellow-300' :
                       award.category === 'Research' ? 'bg-cyan-400/20 text-cyan-300' :

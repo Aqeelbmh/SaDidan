@@ -52,7 +52,7 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h4 className="font-semibold text-white drop-shadow-neon text-sm sm:text-base">Email</h4>
-                  <p className="text-cyan-200 text-sm sm:text-base break-all">sadidan@unsika.ac.id</p>
+                  <p className="text-cyan-200 text-sm sm:text-base break-all">ikhwanussafa.sadidan@unsika.ac.id</p>
                 </div>
               </div>
               
@@ -73,6 +73,15 @@ const Contact = () => {
                 <div className="min-w-0 flex-1">
                   <h4 className="font-semibold text-white drop-shadow-neon text-sm sm:text-base">Institution</h4>
                   <p className="text-cyan-200 text-sm sm:text-base">Universitas Singaperbangsa Karawang</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3 sm:space-x-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-400/20 rounded-full flex items-center justify-center shadow-lg drop-shadow-neon flex-shrink-0">
+                  <Image src="/WhatsAppIcon.svg" alt="WhatsApp" width={20} height={20} className="sm:w-6 sm:h-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-semibold text-white drop-shadow-neon text-sm sm:text-base">WhatsApp / Phone</h4>
+                  <p className="text-cyan-200 text-sm sm:text-base break-all">+6281299880365</p>
                 </div>
               </div>
             </div>
@@ -108,11 +117,20 @@ const Contact = () => {
                   <Image src="/YouTubeIcon.svg" alt="YouTube" width={16} height={16} className="sm:w-5 sm:h-5" />
                 </a>
                 <a 
-                  href="mailto:sadidan@unsika.ac.id" 
+                  href="mailto:ikhwanussafa.sadidan@unsika.ac.id" 
                   className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-600 hover:bg-cyan-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon touch-friendly" 
                   aria-label="Email"
                 >
                   <Image src="/EmailIcon.svg" alt="Email" width={16} height={16} className="sm:w-5 sm:h-5" />
+                </a>
+                <a
+                  href="https://wa.me/6281299880365"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-green-600 hover:bg-green-400/30 transition-all duration-200 hover:-translate-y-1 drop-shadow-neon touch-friendly"
+                  aria-label="WhatsApp"
+                >
+                  <Image src="/WhatsAppIcon.svg" alt="WhatsApp" width={16} height={16} className="sm:w-5 sm:h-5" />
                 </a>
               </div>
             </div>

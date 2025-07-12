@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1",
+    "title": "AWS Certified Developer",
+    "issuer": "Amazon Web Services",
+    "date": "2023-12-01",
+    "credentialId": "AWS-123456",
+    "imageUrl": "/certificates/aws.png",
+    "link": "https://aws.amazon.com/certification/"
+  }
+]

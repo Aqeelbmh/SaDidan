@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "title": "Project Image",
+    "description": "Description of the image",
+    "imageUrl": "/gallery/image1.jpg",
+    "category": "projects"
+  }
+]
