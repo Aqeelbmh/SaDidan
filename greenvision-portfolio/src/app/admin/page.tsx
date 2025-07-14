@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { FiAward, FiBook, FiImage, FiCode, FiGlobe, FiFileText, FiCalendar, FiUser, FiPlus } from 'react-icons/fi';
+import { FiUser, FiPlus } from 'react-icons/fi';
 import AuthWrapper from '@/components/Admin/AuthWrapper';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -125,7 +124,7 @@ const AdminDashboard = () => {
   // Simulate fetching stats from localStorage or API
   useEffect(() => {
     refreshStats();
-  }, [activeTab]);
+  }, [activeTab, refreshStats]);
 
   const handleLogout = () => {
     document.cookie = 'adminToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';

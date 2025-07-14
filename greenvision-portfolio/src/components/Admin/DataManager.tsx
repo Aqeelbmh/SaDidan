@@ -58,8 +58,8 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
           setData([]);
         }
       }
-    } catch (error) {
-      // Optionally: console.warn('Error fetching data, using localStorage fallback:', error);
+    } catch {
+      // Optionally: console.warn('Error fetching data, using localStorage fallback');
       // Fallback to localStorage
       const storedData = localStorage.getItem(`portfolio_${section}`);
       if (storedData) {
@@ -176,7 +176,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <textarea
             name={field.name as string}
-            value={value}
+            value={typeof value === 'string' ? value : ''}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             rows={3}
@@ -190,7 +190,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
           <input
             type="number"
             name={field.name as string}
-            value={value}
+            value={typeof value === 'string' || typeof value === 'number' ? value : ''}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             placeholder={field.placeholder as string}
@@ -203,7 +203,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
           <input
             type="url"
             name={field.name as string}
-            value={value}
+            value={typeof value === 'string' ? value : ''}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             placeholder={field.placeholder as string}
@@ -216,7 +216,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
           <input
             type="text"
             name={field.name as string}
-            value={Array.isArray(value) ? (value as string[]).join(', ') : value}
+            value={Array.isArray(value) ? (value as string[]).join(', ') : (typeof value === 'string' ? value : '')}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: (e.target.value.split(',').map(s => s.trim()) as string[]) })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             placeholder={field.placeholder as string || 'Comma-separated values'}
@@ -228,7 +228,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <select
             name={field.name as string}
-            value={value}
+            value={typeof value === 'string' || typeof value === 'number' ? value : ''}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             required={field.required as boolean}
@@ -247,7 +247,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
           <input
             type="text"
             name={field.name as string}
-            value={value}
+            value={typeof value === 'string' ? value : ''}
             onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             placeholder={field.placeholder as string}
@@ -333,7 +333,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
                 <tr key={item.id} className="hover:bg-blue-50 dark:hover:bg-gray-900 transition-colors">
                   {fields.map(field => (
                     <td key={field.name} className="px-4 py-3 text-gray-900 dark:text-gray-100 text-sm">
-                      {Array.isArray(item[field.name as string]) ? (item[field.name as string] as string[]).join(', ') : item[field.name as string]}
+                      {Array.isArray(item[field.name as string]) ? (item[field.name as string] as string[]).join(', ') : String(item[field.name as string] ?? '')}
                     </td>
                   ))}
                   <td className="px-4 py-3 flex gap-2">

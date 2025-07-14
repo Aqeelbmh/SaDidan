@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FiArrowLeft, FiHome, FiList, FiLogOut } from 'react-icons/fi';
+import { FiArrowLeft, FiLogOut } from 'react-icons/fi';
 
 interface AdminLayoutProps {
   children: ReactNode;

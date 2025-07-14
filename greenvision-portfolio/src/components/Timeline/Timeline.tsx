@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { api, TimelineItem } from "@/lib/api";
+import { api } from "@/lib/api";
 
 const GraduationIcon = () => (
   <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-yellow-400">
