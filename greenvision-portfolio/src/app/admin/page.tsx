@@ -1,63 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { FiAward, FiBook, FiImage, FiCode, FiGlobe, FiFileText, FiCalendar, FiHome, FiLogOut, FiUser, FiExternalLink, FiRefreshCw, FiPlus, FiTrash2 } from 'react-icons/fi';
+import { FiAward, FiBook, FiImage, FiCode, FiGlobe, FiFileText, FiCalendar, FiUser, FiPlus } from 'react-icons/fi';
 import AuthWrapper from '@/components/Admin/AuthWrapper';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import DataManager from '@/components/Admin/DataManager';
-
-const sections = [
-  {
-    name: 'Timeline',
-    icon: FiCalendar,
-    href: '/admin/timeline',
-    description: 'Manage your career timeline and experience',
-    color: 'from-blue-500 to-teal-400'
-  },
-  {
-    name: 'Publications',
-    icon: FiBook,
-    href: '/admin/publications',
-    description: 'Manage your research publications and papers',
-    color: 'from-teal-500 to-blue-400'
-  },
-  {
-    name: 'Gallery',
-    icon: FiImage,
-    href: '/admin/gallery',
-    description: 'Manage your project images and media',
-    color: 'from-blue-400 to-teal-500'
-  },
-  {
-    name: 'Awards',
-    icon: FiAward,
-    href: '/admin/awards',
-    description: 'Manage your awards and recognitions',
-    color: 'from-yellow-400 to-yellow-600'
-  },
-  {
-    name: 'Projects',
-    icon: FiCode,
-    href: '/admin/projects',
-    description: 'Manage your portfolio projects',
-    color: 'from-indigo-500 to-blue-400'
-  },
-  {
-    name: 'Language Skills',
-    icon: FiGlobe,
-    href: '/admin/language',
-    description: 'Manage your language and technical skills',
-    color: 'from-red-400 to-pink-500'
-  },
-  {
-    name: 'Certificates',
-    icon: FiFileText,
-    href: '/admin/certificates',
-    description: 'Manage your professional certificates',
-    color: 'from-teal-400 to-blue-400'
-  }
-];
 
 const sectionOrder = [
   'Timeline',
@@ -80,7 +28,14 @@ const sectionLabels: Record<string, string> = {
 };
 
 // Section fields for each tab
-const sectionFields: Record<string, any[]> = {
+const sectionFields: Record<string, {
+  name: string;
+  label: string;
+  type: 'text' | 'textarea' | 'number' | 'url' | 'array' | 'select';
+  required?: boolean;
+  options?: string[];
+  placeholder?: string;
+}[]> = {
   Timeline: [
     { name: 'year', label: 'Year', type: 'text', required: true, placeholder: 'e.g., 2023' },
     { name: 'title', label: 'Position/Title', type: 'text', required: true, placeholder: 'e.g., Software Engineer' },
@@ -144,7 +99,6 @@ const sectionColors: Record<string, string> = {
 
 const AdminDashboard = () => {
   const router = useRouter();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(sectionOrder[0]);
   const [stats, setStats] = useState<Record<string, number>>({
     Timeline: 0,
@@ -177,9 +131,6 @@ const AdminDashboard = () => {
     document.cookie = 'adminToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     router.push('/admin/login');
   };
-
-  // Placeholder for section data (replace with actual data fetching logic)
-  const sectionData = [];
 
   return (
     <AuthWrapper>

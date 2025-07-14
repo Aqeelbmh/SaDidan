@@ -211,7 +211,7 @@ export async function PUT(request: NextRequest) {
     const existingData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     
     // Update item
-    const updatedData = existingData.map((item: any) => 
+    const updatedData = existingData.map((item: Record<string, unknown>) => 
       item.id === id ? { ...item, ...body } : item
     );
     
@@ -248,7 +248,7 @@ export async function DELETE(request: NextRequest) {
     const existingData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     
     // Remove item
-    const updatedData = existingData.filter((item: any) => item.id !== id);
+    const updatedData = existingData.filter((item: Record<string, unknown>) => item.id !== id);
     
     fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 2));
     

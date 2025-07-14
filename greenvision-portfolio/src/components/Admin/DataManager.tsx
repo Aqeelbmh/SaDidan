@@ -5,7 +5,7 @@ import { FiEdit, FiTrash2, FiPlus, FiX, FiSave, FiSearch } from 'react-icons/fi'
 
 interface DataItem {
   id: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface DataManagerProps {
@@ -27,7 +27,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
   const [loading, setLoading] = useState(true);
   const [editingItem, setEditingItem] = useState<DataItem | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState<Record<string, any>>({});
+  const [formData, setFormData] = useState<Record<string, unknown>>({});
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -168,20 +168,20 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
     // No need to refresh stats here, will refresh after submit
   };
 
-  const renderField = (field: any) => {
-    const value = formData[field.name] || '';
+  const renderField = (field: Record<string, unknown>) => {
+    const value = formData[field.name as string] || '';
     
-    switch (field.type) {
+    switch (field.type as string) {
       case 'textarea':
         return (
           <textarea
-            name={field.name}
+            name={field.name as string}
             value={value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             rows={3}
-            placeholder={field.placeholder}
-            required={field.required}
+            placeholder={field.placeholder as string}
+            required={field.required as boolean}
           />
         );
       
@@ -189,12 +189,12 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <input
             type="number"
-            name={field.name}
+            name={field.name as string}
             value={value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            placeholder={field.placeholder}
-            required={field.required}
+            placeholder={field.placeholder as string}
+            required={field.required as boolean}
           />
         );
       
@@ -202,12 +202,12 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <input
             type="url"
-            name={field.name}
+            name={field.name as string}
             value={value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            placeholder={field.placeholder}
-            required={field.required}
+            placeholder={field.placeholder as string}
+            required={field.required as boolean}
           />
         );
       
@@ -215,26 +215,26 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <input
             type="text"
-            name={field.name}
-            value={Array.isArray(value) ? value.join(', ') : value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value.split(',').map(s => s.trim()) })}
+            name={field.name as string}
+            value={Array.isArray(value) ? (value as string[]).join(', ') : value}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: (e.target.value.split(',').map(s => s.trim()) as string[]) })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            placeholder={field.placeholder || 'Comma-separated values'}
-            required={field.required}
+            placeholder={field.placeholder as string || 'Comma-separated values'}
+            required={field.required as boolean}
           />
         );
       
       case 'select':
         return (
           <select
-            name={field.name}
+            name={field.name as string}
             value={value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            required={field.required}
+            required={field.required as boolean}
           >
             <option value="">Select an option</option>
-            {field.options?.map((option: string) => (
+            {(field.options as string[])?.map((option: string) => (
               <option key={option} value={option}>
                 {option}
               </option>
@@ -246,12 +246,12 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
         return (
           <input
             type="text"
-            name={field.name}
+            name={field.name as string}
             value={value}
-            onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, [field.name as string]: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            placeholder={field.placeholder}
-            required={field.required}
+            placeholder={field.placeholder as string}
+            required={field.required as boolean}
           />
         );
     }
@@ -260,7 +260,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
   // Filtered data
   const filteredData = data.filter(item =>
     fields.some(field =>
-      (item[field.name] || '')
+      (item[field.name as string] || '')
         .toString()
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
@@ -333,7 +333,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
                 <tr key={item.id} className="hover:bg-blue-50 dark:hover:bg-gray-900 transition-colors">
                   {fields.map(field => (
                     <td key={field.name} className="px-4 py-3 text-gray-900 dark:text-gray-100 text-sm">
-                      {Array.isArray(item[field.name]) ? item[field.name].join(', ') : item[field.name]}
+                      {Array.isArray(item[field.name as string]) ? (item[field.name as string] as string[]).join(', ') : item[field.name as string]}
                     </td>
                   ))}
                   <td className="px-4 py-3 flex gap-2">
@@ -345,7 +345,7 @@ const DataManager = ({ section, fields, title, refreshStats }: DataManagerProps)
                       <FiEdit className="w-4 h-4" />
                     </button>
                     <button
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item.id as string)}
                       className="inline-flex items-center justify-center p-2 rounded-lg bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 transition-colors"
                       aria-label="Delete"
                     >

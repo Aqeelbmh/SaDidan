@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiLock, FiUser, FiEye, FiEyeOff, FiShield } from 'react-icons/fi';
+import Link from 'next/link';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -112,7 +113,7 @@ const AdminLogin = () => {
           </button>
         </form>
         <div className="mt-6 flex flex-col items-center gap-2">
-          <a href="/" className="text-cyan-200 hover:text-yellow-300 text-sm transition-colors">← Back to Portfolio</a>
+          <Link href="/" className="text-cyan-200 hover:text-yellow-300 text-sm transition-colors">← Back to Portfolio</Link>
           <a href="mailto:support@example.com" className="text-cyan-300 hover:text-yellow-200 text-xs underline mt-1">Need help? Contact support</a>
         </div>
       </div>

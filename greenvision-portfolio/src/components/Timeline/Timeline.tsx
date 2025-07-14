@@ -27,8 +27,7 @@ const NeonBlob = ({ className }: { className?: string }) => (
 
 const Timeline = () => {
   const [activeTab, setActiveTab] = useState<'education' | 'experience'>('education');
-  const [timelineData, setTimelineData] = useState<TimelineItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Fallback data
   const fallbackEducation = [
@@ -122,17 +121,17 @@ const Timeline = () => {
       (async () => {
         try {
           const data = await api.timeline();
-          setTimelineData(data);
+          // setTimelineData(data); // This line is removed
         } catch (error) {
-          setTimelineData([]);
+          setError('Failed to fetch timeline data.');
         } finally {
-          setLoading(false);
+          // setLoading(false); // This line is removed
         }
       })();
     } else {
       // In production or static export, always use fallback data and never call the API
-      setTimelineData([]); // fallback data is used below
-      setLoading(false);
+      // setTimelineData([]); // fallback data is used below // This line is removed
+      setError('Timeline data is not available in production.');
     }
   }, []);
 

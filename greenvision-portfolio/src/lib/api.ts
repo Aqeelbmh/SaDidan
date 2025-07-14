@@ -72,7 +72,7 @@ export async function fetchSectionData<T>(section: string): Promise<T[]> {
       // In static export or production, always return [] (or fallback data if you want)
       return [];
     }
-  } catch (error) {
+  } catch {
     return [];
   }
 }

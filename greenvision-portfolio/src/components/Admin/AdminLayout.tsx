@@ -3,8 +3,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
-import { FiArrowLeft, FiHome, FiPlus, FiList, FiLogOut } from 'react-icons/fi';
+import { FiArrowLeft, FiHome, FiList, FiLogOut } from 'react-icons/fi';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -13,7 +12,6 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ children, title, section }: AdminLayoutProps) => {
-  const pathname = usePathname();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -21,17 +19,6 @@ const AdminLayout = ({ children, title, section }: AdminLayoutProps) => {
     document.cookie = 'adminToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     router.push('/admin/login');
   };
-
-  const navigation = [
-    { name: 'Dashboard', href: '/admin', icon: FiHome },
-    { name: 'Timeline', href: '/admin/timeline', icon: FiList },
-    { name: 'Publications', href: '/admin/publications', icon: FiList },
-    { name: 'Gallery', href: '/admin/gallery', icon: FiList },
-    { name: 'Awards', href: '/admin/awards', icon: FiList },
-    { name: 'Projects', href: '/admin/projects', icon: FiList },
-    { name: 'Language', href: '/admin/language', icon: FiList },
-    { name: 'Certificates', href: '/admin/certificates', icon: FiList },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
