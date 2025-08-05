@@ -49,12 +49,12 @@ body {
 
 /* Enhanced glass effect with better mobile performance */
 .glass {
-  background: rgba(30,40,60,0.7);
-  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+  background: rgba(30, 40, 60, 0.7);
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 1.5rem;
-  border: 1.5px solid rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Mobile-optimized glass effect */
@@ -62,40 +62,52 @@ body {
   .glass {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.3);
   }
 }
 
 .neon-text {
-  color: #39FF14;
-  text-shadow: 0 0 8px #39FF14, 0 0 16px #00F0FF;
+  color: #39ff14;
+  text-shadow:
+    0 0 2px #39ff14,
+    0 0 4px #00f0ff;
 }
 
 .neon-border {
-  border: 2px solid #00FFD0;
-  box-shadow: 0 0 8px #00FFD0, 0 0 16px #39FF14;
+  border: 2px solid #00ffd0;
+  box-shadow:
+    0 0 2px #00ffd0,
+    0 0 4px #39ff14;
 }
 
 /* Mobile-optimized neon effects */
 @media (max-width: 768px) {
   .neon-border {
-    border: 1px solid #00FFD0;
-    box-shadow: 0 0 4px #00FFD0, 0 0 8px #39FF14;
+    border: 1px solid #00ffd0;
+    box-shadow:
+      0 0 1px #00ffd0,
+      0 0 2px #39ff14;
   }
 }
 
 .neon-btn {
-  background: linear-gradient(90deg, #00F0FF 0%, #39FF14 100%);
+  background: linear-gradient(90deg, #00f0ff 0%, #39ff14 100%);
   color: #0a0f1c;
-  box-shadow: 0 0 16px 2px #39FF14, 0 0 32px 4px #00F0FF;
+  box-shadow:
+    0 0 4px 1px #39ff14,
+    0 0 8px 2px #00f0ff;
   border-radius: 9999px;
   font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .neon-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 32px 8px #00FFD0, 0 0 64px 16px #FF00EA;
+  transform: scale(1.02);
+  box-shadow:
+    0 0 8px 2px #00ffd0,
+    0 0 16px 4px #ff00ea;
 }
 
 /* Mobile touch-friendly buttons */
@@ -103,6 +115,9 @@ body {
   .neon-btn {
     min-height: 44px; /* iOS touch target minimum */
     padding: 12px 24px;
+    box-shadow:
+      0 0 2px 0.5px #39ff14,
+      0 0 4px 1px #00f0ff;
   }
 }
 
@@ -113,12 +128,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00F0FF;
+  background: #00f0ff;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #39FF14;
+  background: #39ff14;
 }
 
 /* Mobile scrollbar */
@@ -234,7 +249,7 @@ body {
   * {
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   .animate-blob {
     animation-duration: 8s;
   }
@@ -246,9 +261,81 @@ body {
     background: rgba(10, 24, 38, 0.9);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-  
+
   .neon-text {
-    text-shadow: 0 0 4px #39FF14;
+    text-shadow: 0 0 1px #39ff14;
+  }
+}
+
+/* Missing CSS classes used in components - Reduced glow effects */
+.drop-shadow-neon {
+  text-shadow:
+    0 0 2px #39ff14,
+    0 0 4px #00f0ff;
+}
+
+.neon-glow {
+  box-shadow:
+    0 0 2px #39ff14,
+    0 0 4px #00f0ff;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.liquid-btn {
+  background: linear-gradient(90deg, #00f0ff 0%, #39ff14 100%);
+  color: #0a0f1c;
+  box-shadow:
+    0 0 4px 1px #39ff14,
+    0 0 8px 2px #00f0ff;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.liquid-btn:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 0 8px 2px #00ffd0,
+    0 0 16px 4px #ff00ea;
+}
+
+/* Mobile-optimized versions */
+@media (max-width: 768px) {
+  .drop-shadow-neon {
+    text-shadow:
+      0 0 1px #39ff14,
+      0 0 2px #00f0ff;
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 1px #39ff14,
+      0 0 2px #00f0ff;
+  }
+
+  .glassmorphism {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .liquid-btn {
+    box-shadow:
+      0 0 2px 0.5px #39ff14,
+      0 0 4px 1px #00f0ff;
+  }
+
+  .liquid-btn:hover {
+    box-shadow:
+      0 0 4px 1px #00ffd0,
+      0 0 8px 2px #ff00ea;
   }
 }
 
@@ -259,7 +346,7 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .animate-blob {
     animation: none;
   }

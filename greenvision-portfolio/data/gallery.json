@@ -1,9 +1,38 @@
 [
   {
     "id": "1",
-    "title": "Project Image",
-    "description": "Description of the image",
-    "imageUrl": "/gallery/image1.jpg",
+    "title": "Environmental Field Research",
+    "description": "Conducting biodiversity surveys in protected forest areas",
+    "category": "research"
+  },
+  {
+    "id": "2",
+    "title": "GIS Analysis Workshop",
+    "description": "Teaching students environmental data analysis techniques",
+    "category": "education"
+  },
+  {
+    "id": "3",
+    "title": "Environmental Impact Assessment",
+    "description": "Site visit for infrastructure project environmental assessment",
+    "category": "consulting"
+  },
+  {
+    "id": "4",
+    "title": "Waste Management Project",
+    "description": "Implementing sustainable waste management solutions",
     "category": "projects"
+  },
+  {
+    "id": "5",
+    "title": "Climate Change Adaptation",
+    "description": "Community engagement for coastal resilience planning",
+    "category": "policy"
+  },
+  {
+    "id": "6",
+    "title": "Environmental Education",
+    "description": "Digital learning platform for environmental awareness",
+    "category": "education"
   }
 ]

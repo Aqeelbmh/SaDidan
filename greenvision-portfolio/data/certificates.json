@@ -1,11 +1,42 @@
 [
   {
     "id": "1",
-    "title": "AWS Certified Developer",
-    "issuer": "Amazon Web Services",
-    "date": "2023-12-01",
-    "credentialId": "AWS-123456",
-    "imageUrl": "/certificates/aws.png",
-    "link": "https://aws.amazon.com/certification/"
+    "title": "Environmental Impact Assessment Certification",
+    "issuer": "Indonesian Ministry of Environment",
+    "date": "2023-06-15",
+    "credentialId": "EIA-2023-001",
+    "link": ""
+  },
+  {
+    "id": "2",
+    "title": "GIS Professional Certification",
+    "issuer": "ESRI",
+    "date": "2022-11-20",
+    "credentialId": "GIS-2022-045",
+    "link": ""
+  },
+  {
+    "id": "3",
+    "title": "Environmental Management Systems Auditor",
+    "issuer": "ISO Certification Body",
+    "date": "2022-08-10",
+    "credentialId": "EMS-2022-023",
+    "link": ""
+  },
+  {
+    "id": "4",
+    "title": "Climate Change Adaptation Specialist",
+    "issuer": "United Nations Development Programme",
+    "date": "2021-12-05",
+    "credentialId": "CCA-2021-078",
+    "link": ""
+  },
+  {
+    "id": "5",
+    "title": "Biodiversity Conservation Expert",
+    "issuer": "International Union for Conservation of Nature",
+    "date": "2021-09-15",
+    "credentialId": "BCE-2021-034",
+    "link": ""
   }
 ]

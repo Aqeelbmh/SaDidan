@@ -1,15 +1,15 @@
 "use client";
-import React from 'react';
+import React from "react";
 import Image from "next/image";
-import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 const Hero: React.FC = () => {
   const handleDownloadCV = () => {
     // Create a link element to trigger the download
-    const link = document.createElement('a');
-    link.href = '/CV-Ikhwanussafa-Sadidan.pdf';
-    link.download = 'CV-Ikhwanussafa-Sadidan.pdf';
-    link.target = '_blank';
+    const link = document.createElement("a");
+    link.href = "/CV-Ikhwanussafa-Sadidan.pdf";
+    link.download = "CV-Ikhwanussafa-Sadidan.pdf";
+    link.target = "_blank";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -47,10 +47,20 @@ const Hero: React.FC = () => {
             {/* Description */}
             <div className="space-y-4">
               <p className="text-base sm:text-lg text-cyan-100 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                A passionate university lecturer and researcher dedicated to sustainability and ecological innovation. With an academic foundation in Ecology and Environmental Management from Tomsk Polytechnic University (Russia) and years of teaching, researching, and consulting experience, I aim to inspire change through science and education.
+                A passionate university lecturer and researcher dedicated to
+                sustainability and ecological innovation. With an academic
+                foundation in Ecology and Environmental Management from Tomsk
+                Polytechnic University (Russia) and years of teaching,
+                researching, and consulting experience, I aim to inspire change
+                through science and education.
               </p>
               <p className="text-base sm:text-lg text-cyan-100 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                My research focuses on environmental pollution, Geographic Information Systems (GIS), and the integration of Artificial Intelligence in ecological analysis. I currently serve as a lecturer in Faculty of Engineering at Universitas Singaperbangsa Karawang (UNSIKA), where I also responsible to coordinate international collaborations and affairs.
+                My research focuses on environmental pollution, Geographic
+                Information Systems (GIS), and the integration of Artificial
+                Intelligence in ecological analysis. I currently serve as a
+                lecturer in Faculty of Engineering at Universitas Singaperbangsa
+                Karawang (UNSIKA), where I also responsible to coordinate
+                international collaborations and affairs.
               </p>
               <p className="text-base sm:text-lg text-green-400 font-semibold">
                 Let&apos;s work together to build a healthier, greener planet.
@@ -60,22 +70,34 @@ const Hero: React.FC = () => {
             {/* Stats Cards */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-md mx-auto lg:mx-0">
               <div className="backdrop-blur-md bg-white/10 border border-yellow-300/20 rounded-xl p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-yellow-300">5+</div>
-                <div className="text-xs sm:text-sm text-cyan-100">Years Experience</div>
+                <div className="text-xl sm:text-2xl font-bold text-yellow-300">
+                  5+
+                </div>
+                <div className="text-xs sm:text-sm text-cyan-100">
+                  Years Experience
+                </div>
               </div>
               <div className="backdrop-blur-md bg-white/10 border border-cyan-400/20 rounded-xl p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-cyan-400">10+</div>
-                <div className="text-xs sm:text-sm text-cyan-100">Research Papers</div>
+                <div className="text-xl sm:text-2xl font-bold text-cyan-400">
+                  10+
+                </div>
+                <div className="text-xs sm:text-sm text-cyan-100">
+                  Research Papers
+                </div>
               </div>
               <div className="backdrop-blur-md bg-white/10 border border-green-400/20 rounded-xl p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-green-400">100+</div>
-                <div className="text-xs sm:text-sm text-cyan-100">Students Mentored</div>
+                <div className="text-xl sm:text-2xl font-bold text-green-400">
+                  100+
+                </div>
+                <div className="text-xs sm:text-sm text-cyan-100">
+                  Students Mentored
+                </div>
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-start">
-              <button 
+              <button
                 onClick={handleDownloadCV}
                 className="group relative px-4 py-2 text-sm bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/25 touch-friendly"
               >
@@ -84,14 +106,14 @@ const Hero: React.FC = () => {
                 </span>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               </button>
-              
+
               <button className="group relative px-4 py-2 text-sm bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-300 hover:to-cyan-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 touch-friendly">
                 <span className="flex items-center justify-center gap-2">
                   🌍 Explore My Work
                 </span>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-300 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
               </button>
-              
+
               <button className="group relative px-4 py-2 text-sm bg-gradient-to-r from-green-400 to-green-500 hover:from-green-300 hover:to-green-400 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/25 touch-friendly">
                 <span className="flex items-center justify-center gap-2">
                   📬 Contact Me
@@ -116,39 +138,68 @@ const Hero: React.FC = () => {
                     priority
                   />
                 </div>
-                
+
                 {/* Floating elements */}
                 <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-yellow-400 to-cyan-400 rounded-full opacity-80 animate-pulse"></div>
                 <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-green-400 rounded-full opacity-80 animate-pulse animation-delay-1000"></div>
               </div>
-              
+
               {/* Quick info */}
               <div className="mt-4 sm:mt-6 text-center space-y-2">
-                <h3 className="text-lg sm:text-xl font-semibold text-white">Lecturer of Environmental Engineering Study Program</h3>
-                <p className="text-sm sm:text-base text-cyan-100">Universitas Singaperbangsa Karawang (UNSIKA)</p>
+                <h3 className="text-lg sm:text-xl font-semibold text-white">
+                  Lecturer of Environmental Engineering Study Program
+                </h3>
+                <p className="text-sm sm:text-base text-cyan-100">
+                  Universitas Singaperbangsa Karawang (UNSIKA)
+                </p>
                 <div className="flex flex-wrap justify-center gap-2 mt-3 sm:mt-4">
-                  <span className="px-2 sm:px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-xs sm:text-sm">GIS</span>
-                  <span className="px-2 sm:px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full text-xs sm:text-sm">AI</span>
-                  <span className="px-2 sm:px-3 py-1 bg-green-400/20 text-green-300 rounded-full text-xs sm:text-sm">Pollution</span>
-                  <span className="px-2 sm:px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-xs sm:text-sm">Research</span>
+                  <span className="px-2 sm:px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-xs sm:text-sm">
+                    GIS
+                  </span>
+                  <span className="px-2 sm:px-3 py-1 bg-cyan-400/20 text-cyan-300 rounded-full text-xs sm:text-sm">
+                    AI
+                  </span>
+                  <span className="px-2 sm:px-3 py-1 bg-green-400/20 text-green-300 rounded-full text-xs sm:text-sm">
+                    Pollution
+                  </span>
+                  <span className="px-2 sm:px-3 py-1 bg-yellow-400/20 text-yellow-300 rounded-full text-xs sm:text-sm">
+                    Research
+                  </span>
                 </div>
               </div>
 
               {/* Social Media Icons */}
               <div className="flex justify-center gap-4 mt-4">
-                <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/ikhwanussafa.sadidan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
                   <FaFacebook className="w-7 h-7 text-[#1877F3] hover:scale-110 hover:text-blue-500 transition-transform" />
                 </a>
-                <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/sadidun"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
                   <FaInstagram className="w-7 h-7 text-[#E4405F] hover:scale-110 hover:text-pink-500 transition-transform" />
                 </a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/sadidan-ikhwanussafa-9624b990/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
                   <FaLinkedin className="w-7 h-7 text-[#0A66C2] hover:scale-110 hover:text-blue-700 transition-transform" />
                 </a>
-                <a href="https://wa.me/yourwhatsapplink" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                  <FaWhatsapp className="w-7 h-7 text-[#25D366] hover:scale-110 hover:text-green-500 transition-transform" />
-                </a>
-                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <a
+                  href="https://youtube.com/@sadidan26"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                >
                   <FaYoutube className="w-7 h-7 text-[#FF0000] hover:scale-110 hover:text-red-600 transition-transform" />
                 </a>
               </div>
@@ -168,4 +219,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-

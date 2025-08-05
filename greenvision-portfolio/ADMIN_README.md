@@ -24,10 +24,12 @@ This admin system allows you to manage all portfolio sections without manually e
 ## 🔑 Access
 
 ### Login Credentials
+
 - **Username**: `admin`
 - **Password**: `admin123`
 
 ### How to Access
+
 1. Click the "Admin" link in the navbar
 2. Or go directly to `/admin/login`
 3. Enter your credentials
@@ -36,18 +38,21 @@ This admin system allows you to manage all portfolio sections without manually e
 ## 🛠️ How to Use
 
 ### Adding New Items
+
 1. Navigate to any section (e.g., `/admin/timeline`)
 2. Click "Add New" button
 3. Fill in the required fields
 4. Click "Create" to save
 
 ### Editing Items
+
 1. Find the item you want to edit
 2. Click the edit icon (pencil)
 3. Modify the fields
 4. Click "Update" to save changes
 
 ### Deleting Items
+
 1. Find the item you want to delete
 2. Click the delete icon (trash)
 3. Confirm the deletion
@@ -55,15 +60,18 @@ This admin system allows you to manage all portfolio sections without manually e
 ## 🔧 Technical Details
 
 ### Data Storage
+
 - **Development**: Uses API routes + localStorage backup
 - **Production**: Uses localStorage only (compatible with static export)
 
 ### Authentication
+
 - Simple cookie-based authentication
 - Session expires after 24 hours
 - No middleware required (works with static export)
 
 ### File Structure
+
 ```
 src/
 ├── app/
@@ -89,12 +97,14 @@ src/
 ## 🔒 Security Notes
 
 ### For Production Use
+
 1. **Change Default Credentials**: Update username/password in `/admin/login/page.tsx`
 2. **Consider Additional Security**: Add rate limiting, stronger authentication
 3. **Data Backup**: Regularly backup localStorage data
 4. **HTTPS**: Ensure your site uses HTTPS in production
 
 ### Current Security Features
+
 - Client-side authentication
 - Session management with cookies
 - Protected admin routes
@@ -103,6 +113,7 @@ src/
 ## 📱 Responsive Design
 
 The admin interface is fully responsive and includes:
+
 - Touch-friendly buttons and forms
 - Mobile-optimized layouts
 - Smooth animations and transitions
@@ -133,6 +144,7 @@ The admin interface is fully responsive and includes:
    - Clear browser cache
 
 ### Browser Compatibility
+
 - Chrome/Edge: Full support
 - Firefox: Full support
 - Safari: Full support
@@ -141,11 +153,13 @@ The admin interface is fully responsive and includes:
 ## 🔄 Data Migration
 
 ### From Hardcoded Data
+
 1. Export your current data from components
 2. Use the admin interface to add items
 3. Data will be automatically saved to localStorage
 
 ### Backup/Restore
+
 1. **Export**: Copy localStorage data from browser dev tools
 2. **Import**: Paste data back into localStorage
 3. **Format**: JSON array of objects with proper structure
@@ -153,6 +167,7 @@ The admin interface is fully responsive and includes:
 ## 📈 Future Enhancements
 
 Potential improvements for the admin system:
+
 - File upload for images
 - Rich text editor for descriptions
 - Bulk import/export functionality
@@ -164,6 +179,7 @@ Potential improvements for the admin system:
 ## 🆘 Support
 
 If you encounter issues:
+
 1. Check the browser console for errors
 2. Verify localStorage is available
 3. Test in different browsers
@@ -171,4 +187,4 @@ If you encounter issues:
 
 ---
 
-**Note**: This admin system is designed to work with static site generation and doesn't require a server for data management. All data is stored locally in the browser's localStorage. 
+**Note**: This admin system is designed to work with static site generation and doesn't require a server for data management. All data is stored locally in the browser's localStorage.

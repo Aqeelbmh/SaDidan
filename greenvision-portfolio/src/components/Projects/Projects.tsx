@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 
 const NeonBlob = ({ className }: { className?: string }) => (
-  <div className={`absolute rounded-full blur-2xl opacity-60 pointer-events-none ${className}`}
-    style={{ background: "linear-gradient(135deg, #ffe600 0%, #00ffe7 100%)", filter: "blur(60px)" }}
+  <div
+    className={`absolute rounded-full blur-2xl opacity-60 pointer-events-none ${className}`}
+    style={{
+      background: "linear-gradient(135deg, #ffe600 0%, #00ffe7 100%)",
+      filter: "blur(60px)",
+    }}
   />
 );
 
@@ -12,46 +16,68 @@ const Projects = () => {
   const projects = [
     {
       title: "Environmental Impact Assessment",
-      description: "Comprehensive EIA for major infrastructure projects, ensuring compliance with environmental regulations and sustainable development practices.",
+      description:
+        "Comprehensive EIA for major infrastructure projects, ensuring compliance with environmental regulations and sustainable development practices.",
       technologies: ["GIS", "Environmental Modeling", "Stakeholder Analysis"],
       image: "🌱",
-      category: "Consulting"
+      category: "Consulting",
     },
     {
       title: "Waste Management System Design",
-      description: "Developed sustainable waste management solutions for urban areas, focusing on circular economy principles and community engagement.",
-      technologies: ["Waste Analysis", "Community Planning", "Sustainability Metrics"],
+      description:
+        "Developed sustainable waste management solutions for urban areas, focusing on circular economy principles and community engagement.",
+      technologies: [
+        "Waste Analysis",
+        "Community Planning",
+        "Sustainability Metrics",
+      ],
       image: "♻️",
-      category: "Research"
+      category: "Research",
     },
     {
       title: "Biodiversity Conservation Program",
-      description: "Led conservation initiatives for endangered species, implementing habitat restoration and monitoring programs in protected areas.",
-      technologies: ["Species Monitoring", "Habitat Mapping", "Conservation Planning"],
+      description:
+        "Led conservation initiatives for endangered species, implementing habitat restoration and monitoring programs in protected areas.",
+      technologies: [
+        "Species Monitoring",
+        "Habitat Mapping",
+        "Conservation Planning",
+      ],
       image: "🦋",
-      category: "Conservation"
+      category: "Conservation",
     },
     {
       title: "Climate Adaptation Strategy",
-      description: "Designed climate resilience strategies for coastal communities, incorporating traditional knowledge with modern scientific approaches.",
-      technologies: ["Climate Modeling", "Risk Assessment", "Community Engagement"],
+      description:
+        "Designed climate resilience strategies for coastal communities, incorporating traditional knowledge with modern scientific approaches.",
+      technologies: [
+        "Climate Modeling",
+        "Risk Assessment",
+        "Community Engagement",
+      ],
       image: "🌊",
-      category: "Policy"
+      category: "Policy",
     },
     {
       title: "Environmental Education Platform",
-      description: "Created digital learning resources for environmental education, making complex ecological concepts accessible to diverse audiences.",
-      technologies: ["Digital Learning", "Content Creation", "Educational Technology"],
+      description:
+        "Created digital learning resources for environmental education, making complex ecological concepts accessible to diverse audiences.",
+      technologies: [
+        "Digital Learning",
+        "Content Creation",
+        "Educational Technology",
+      ],
       image: "📚",
-      category: "Education"
+      category: "Education",
     },
     {
       title: "Green Infrastructure Planning",
-      description: "Planned and implemented green infrastructure projects in urban areas, enhancing ecosystem services and community well-being.",
+      description:
+        "Planned and implemented green infrastructure projects in urban areas, enhancing ecosystem services and community well-being.",
       technologies: ["Urban Planning", "Ecosystem Services", "Green Design"],
       image: "🏙️",
-      category: "Urban Planning"
-    }
+      category: "Urban Planning",
+    },
   ];
 
   return (
@@ -59,28 +85,29 @@ const Projects = () => {
       {/* Neon blobs */}
       <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
       <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
-      
+
       <div className="relative z-20 container-responsive">
         <div className="text-center mb-12 sm:mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 40 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.7 }} 
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
           >
             Featured Projects
           </motion.h2>
-          <motion.div 
-            initial={{ scaleX: 0 }} 
-            animate={{ scaleX: 1 }} 
-            transition={{ duration: 0.7, delay: 0.2 }} 
-            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow" 
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow"
           />
           <p className="text-base sm:text-lg text-yellow-100 mt-4 sm:mt-6 max-w-3xl mx-auto px-4">
-            Transforming environmental challenges into sustainable solutions through innovative projects
+            Transforming environmental challenges into sustainable solutions
+            through innovative projects
           </p>
         </div>
-        
+
         <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <motion.div
@@ -108,7 +135,7 @@ const Projects = () => {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <span 
+                    <span
                       key={techIndex}
                       className="px-2 sm:px-3 py-1 bg-yellow-300/10 text-yellow-800 text-xs font-medium rounded-full neon-glow"
                     >
@@ -128,7 +155,7 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
-        
+
         <div className="text-center mt-12 sm:mt-16">
           <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn touch-friendly">
             View All Projects

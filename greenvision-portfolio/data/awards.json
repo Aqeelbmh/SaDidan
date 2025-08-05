@@ -1,9 +1,23 @@
 [
   {
     "id": "1",
-    "title": "Best Developer Award",
-    "organization": "Tech Conference",
+    "title": "Outstanding Lecturer Award",
+    "organization": "Universitas Singaperbangsa Karawang",
     "year": "2023",
-    "description": "Recognized for outstanding contributions to software development."
+    "description": "Recognized for excellence in teaching and student mentorship in environmental engineering."
+  },
+  {
+    "id": "2",
+    "title": "Best Research Paper",
+    "organization": "International Environmental Conference",
+    "year": "2022",
+    "description": "Awarded for innovative research on environmental pollution assessment using GIS technology."
+  },
+  {
+    "id": "3",
+    "title": "Environmental Leadership Award",
+    "organization": "Indonesian Environmental Society",
+    "year": "2021",
+    "description": "Recognized for contributions to environmental education and sustainable development initiatives."
   }
 ]

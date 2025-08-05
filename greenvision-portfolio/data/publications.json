@@ -1,11 +1,47 @@
 [
   {
     "id": "1",
-    "title": "Research Paper Title",
-    "authors": "Your Name, Co-author",
-    "journal": "Journal Name",
+    "title": "Environmental Impact Assessment of Urban Development Projects",
+    "authors": "Sadidan, I., et al.",
+    "journal": "Environmental Science and Technology",
     "year": "2023",
-    "doi": "10.1000/example",
+    "doi": "10.1000/env.2023.001",
+    "link": "https://example.com"
+  },
+  {
+    "id": "2",
+    "title": "GIS-Based Analysis of Pollution Patterns in Urban Areas",
+    "authors": "Sadidan, I., et al.",
+    "journal": "Journal of Environmental Management",
+    "year": "2022",
+    "doi": "10.1000/jem.2022.045",
+    "link": "https://example.com"
+  },
+  {
+    "id": "3",
+    "title": "Sustainable Waste Management Strategies for Developing Cities",
+    "authors": "Sadidan, I., et al.",
+    "journal": "Waste Management & Research",
+    "year": "2022",
+    "doi": "10.1000/wmr.2022.023",
+    "link": "https://example.com"
+  },
+  {
+    "id": "4",
+    "title": "Biodiversity Conservation in Fragmented Landscapes",
+    "authors": "Sadidan, I., et al.",
+    "journal": "Conservation Biology",
+    "year": "2021",
+    "doi": "10.1000/cb.2021.078",
+    "link": "https://example.com"
+  },
+  {
+    "id": "5",
+    "title": "Climate Change Adaptation Strategies for Coastal Communities",
+    "authors": "Sadidan, I., et al.",
+    "journal": "Climate Change Ecology",
+    "year": "2021",
+    "doi": "10.1000/cce.2021.034",
     "link": "https://example.com"
   }
 ]

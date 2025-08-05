@@ -1,8 +1,50 @@
 [
   {
     "id": "1",
-    "name": "JavaScript",
+    "name": "Indonesian",
+    "proficiency": 100,
+    "category": "Native"
+  },
+  {
+    "id": "2",
+    "name": "English",
+    "proficiency": 88,
+    "category": "Advanced"
+  },
+  {
+    "id": "3",
+    "name": "Russian",
+    "proficiency": 72,
+    "category": "Intermediate-Advanced"
+  },
+  {
+    "id": "4",
+    "name": "Arabic",
+    "proficiency": 45,
+    "category": "Intermediate"
+  },
+  {
+    "id": "5",
+    "name": "Japanese",
+    "proficiency": 22,
+    "category": "Beginner-Intermediate"
+  },
+  {
+    "id": "6",
+    "name": "GIS Software",
     "proficiency": 90,
-    "category": "Programming"
+    "category": "Technical"
+  },
+  {
+    "id": "7",
+    "name": "Environmental Modeling",
+    "proficiency": 88,
+    "category": "Technical"
+  },
+  {
+    "id": "8",
+    "name": "Data Analysis",
+    "proficiency": 85,
+    "category": "Technical"
   }
 ]
