@@ -35,15 +35,12 @@ const Gallery = ({ items, cvUrl }: GalleryProps) => {
                   className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
                 />
               ) : (
-                <div className="relative flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_35%_25%,rgba(88,195,155,0.16),transparent_60%),radial-gradient(circle_at_70%_75%,rgba(199,168,106,0.16),transparent_60%)]">
+                <div className="relative flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_35%_25%,rgba(88,195,155,0.16),transparent_60%),radial-gradient(circle_at_70%_75%,rgba(199,168,106,0.16),transparent_60%)] pb-16">
                   <div className="flex h-20 w-20 items-center justify-center rounded-full border border-gold/25 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.09)]">
                     <span className="text-3xl" aria-hidden>
                       {item.emoji || "🌿"}
                     </span>
                   </div>
-                  <span className="mt-5 font-mono text-[0.55rem] uppercase tracking-[0.3em] text-muted/70">
-                    Field note
-                  </span>
                 </div>
               )}
 
