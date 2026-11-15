@@ -13,6 +13,7 @@ A modern, responsive portfolio website built with [Next.js](https://nextjs.org/)
 - **Modular components**: Hero, About, Projects, Gallery, Timeline, Awards, Publications, Contact, Footer, and Navbar
 - **SVG icons** and custom assets
 - **Easy deployment** (Vercel-ready)
+- **Built-in content editor** at `/admin`, backed by Turso — see [ADMIN_README.md](ADMIN_README.md)
 
 ---
 

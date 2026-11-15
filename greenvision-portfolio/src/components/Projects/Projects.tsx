@@ -1,168 +1,116 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import type { Project } from "../../lib/types";
+import SectionShell from "../ui/SectionShell";
+import Reveal from "../ui/Reveal";
 
-const NeonBlob = ({ className }: { className?: string }) => (
-  <div
-    className={`absolute rounded-full blur-2xl opacity-60 pointer-events-none ${className}`}
-    style={{
-      background: "linear-gradient(135deg, #ffe600 0%, #00ffe7 100%)",
-      filter: "blur(60px)",
-    }}
-  />
-);
+interface ProjectsProps {
+  items: Project[];
+}
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "Environmental Impact Assessment",
-      description:
-        "Comprehensive EIA for major infrastructure projects, ensuring compliance with environmental regulations and sustainable development practices.",
-      technologies: ["GIS", "Environmental Modeling", "Stakeholder Analysis"],
-      image: "🌱",
-      category: "Consulting",
-    },
-    {
-      title: "Waste Management System Design",
-      description:
-        "Developed sustainable waste management solutions for urban areas, focusing on circular economy principles and community engagement.",
-      technologies: [
-        "Waste Analysis",
-        "Community Planning",
-        "Sustainability Metrics",
-      ],
-      image: "♻️",
-      category: "Research",
-    },
-    {
-      title: "Biodiversity Conservation Program",
-      description:
-        "Led conservation initiatives for endangered species, implementing habitat restoration and monitoring programs in protected areas.",
-      technologies: [
-        "Species Monitoring",
-        "Habitat Mapping",
-        "Conservation Planning",
-      ],
-      image: "🦋",
-      category: "Conservation",
-    },
-    {
-      title: "Climate Adaptation Strategy",
-      description:
-        "Designed climate resilience strategies for coastal communities, incorporating traditional knowledge with modern scientific approaches.",
-      technologies: [
-        "Climate Modeling",
-        "Risk Assessment",
-        "Community Engagement",
-      ],
-      image: "🌊",
-      category: "Policy",
-    },
-    {
-      title: "Environmental Education Platform",
-      description:
-        "Created digital learning resources for environmental education, making complex ecological concepts accessible to diverse audiences.",
-      technologies: [
-        "Digital Learning",
-        "Content Creation",
-        "Educational Technology",
-      ],
-      image: "📚",
-      category: "Education",
-    },
-    {
-      title: "Green Infrastructure Planning",
-      description:
-        "Planned and implemented green infrastructure projects in urban areas, enhancing ecosystem services and community well-being.",
-      technologies: ["Urban Planning", "Ecosystem Services", "Green Design"],
-      image: "🏙️",
-      category: "Urban Planning",
-    },
-  ];
-
+const Projects = ({ items }: ProjectsProps) => {
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
-      {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
-
-      <div className="relative z-20 container-responsive">
-        <div className="text-center mb-12 sm:mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
-          >
-            Featured Projects
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow"
-          />
-          <p className="text-base sm:text-lg text-yellow-100 mt-4 sm:mt-6 max-w-3xl mx-auto px-4">
-            Transforming environmental challenges into sustainable solutions
-            through innovative projects
-          </p>
-        </div>
-
-        <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/10 rounded-2xl overflow-hidden border border-yellow-300/30 hover:shadow-neon transition-all duration-300 hover:-translate-y-2 group flex flex-col backdrop-blur-xl glassmorphism neon-glow"
-            >
-              <div className="p-6 sm:p-8 flex-1 flex flex-col">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-yellow-300/20 rounded-xl flex items-center justify-center text-2xl sm:text-3xl shadow-lg drop-shadow-neon">
-                    {project.image}
+    <SectionShell
+      index="06"
+      label="Projects"
+      title={
+        <>
+          Selected <em className="not-italic text-gold-soft">work</em>.
+        </>
+      }
+      intro="Applied research and consulting — from environmental impact assessment to green infrastructure and community education."
+    >
+      <div className="grid gap-6 md:grid-cols-2">
+        {items.map((project, index) => (
+          <Reveal key={project.id} delay={Math.min(index * 0.05, 0.3)}>
+            <article className="glass group flex h-full flex-col overflow-hidden rounded-2xl transition-colors duration-300 hover:border-gold/30">
+              <div className="relative aspect-[16/10] overflow-hidden bg-paper-2">
+                {project.imageUrl ? (
+                  <Image
+                    src={project.imageUrl}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 768px) 45vw, 92vw"
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+                  />
+                ) : (
+                  <div className="relative flex h-full w-full flex-col items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(88,195,155,0.16),transparent_60%),radial-gradient(circle_at_75%_80%,rgba(199,168,106,0.14),transparent_55%)]">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full border border-gold/25 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.09)]">
+                      <span className="text-3xl" aria-hidden>
+                        {project.emoji || "🌱"}
+                      </span>
+                    </div>
+                    <span className="mt-5 font-mono text-[0.55rem] uppercase tracking-[0.3em] text-muted/70">
+                      Project study
+                    </span>
                   </div>
-                  <span className="px-2 sm:px-3 py-1 bg-yellow-300/20 text-yellow-800 text-xs font-semibold rounded-full neon-glow">
+                )}
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(7,14,12,0.7)] via-transparent to-transparent" />
+
+                <span className="absolute left-4 top-4 font-mono text-[0.62rem] tracking-[0.18em] text-ink-soft/80">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                {project.category && (
+                  <span className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/25 px-3 py-1 text-[0.55rem] uppercase tracking-[0.18em] text-ink-soft backdrop-blur-md">
                     {project.category}
                   </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-tight drop-shadow-neon">
+                )}
+              </div>
+
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-display text-xl leading-snug text-ink">
                   {project.title}
                 </h3>
-                <p className="text-yellow-100 mb-4 leading-relaxed flex-1 text-sm sm:text-base">
+                <p className="mt-3 flex-1 text-[0.86rem] leading-relaxed text-muted">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2 sm:px-3 py-1 bg-yellow-300/10 text-yellow-800 text-xs font-medium rounded-full neon-glow"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-col sm:flex-row gap-2 mt-auto">
-                  <button className="flex-1 px-4 py-2 sm:py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm touch-friendly">
-                    View Details
-                  </button>
-                  <button className="px-4 py-2 sm:py-3 border border-yellow-300 text-yellow-800 rounded-lg hover:bg-yellow-300 hover:text-white transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm touch-friendly">
-                    Case Study
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn touch-friendly">
-            View All Projects
-          </button>
-        </div>
+                {project.technologies.length > 0 && (
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={`${tech}-${techIndex}`}
+                        className="rounded-full border border-line px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.1em] text-ink-soft"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {(project.liveUrl || project.githubUrl) && (
+                  <div className="mt-6 flex items-center gap-6 border-t border-line pt-4">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-arrow"
+                      >
+                        View project <span aria-hidden>↗</span>
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-arrow"
+                      >
+                        Case study <span aria-hidden>↗</span>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            </article>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   );
 };
 

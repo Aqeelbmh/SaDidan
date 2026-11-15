@@ -1,177 +1,128 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import Link from "next/link";
+import type { ContactSettings, FooterSettings } from "../lib/types";
 
-const NeonBlob = ({ className }: { className?: string }) => (
-  <div
-    className={`absolute rounded-full blur-2xl opacity-60 pointer-events-none ${className}`}
-    style={{
-      background: "linear-gradient(135deg, #ffe600 0%, #00ffe7 100%)",
-      filter: "blur(60px)",
-    }}
-  />
-);
+interface FooterProps {
+  footer: FooterSettings;
+  contact: ContactSettings;
+}
 
-const Footer = () => {
-  const [currentYear] = useState(new Date().getFullYear());
+const socialLinks = (contact: ContactSettings) =>
+  [
+    { name: "LinkedIn", url: contact.linkedin },
+    { name: "Facebook", url: contact.facebook },
+    { name: "Instagram", url: contact.instagram },
+    { name: "YouTube", url: contact.youtube },
+    { name: "Email", url: contact.email ? `mailto:${contact.email}` : "" },
+  ].filter((social) => social.url);
 
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/sadidan-ikhwanussafa-9624b990/",
-      icon: "/LinkedInIcon.svg",
-      color: "hover:bg-yellow-400/30",
-    },
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/ikhwanussafa.sadidan/",
-      icon: "/FacebookIcon.svg",
-      color: "hover:bg-blue-400/30",
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/sadidun",
-      icon: "/InstagramIcon.svg",
-      color: "hover:bg-pink-400/30",
-    },
-    {
-      name: "YouTube",
-      url: "https://youtube.com/@sadidan26",
-      icon: "/YouTubeIcon.svg",
-      color: "hover:bg-red-400/30",
-    },
-    {
-      name: "Email",
-      url: "mailto:sadidan@unsika.ac.id",
-      icon: "/EmailIcon.svg",
-      color: "hover:bg-cyan-400/30",
-    },
-  ];
+const explore = [
+  { name: "Journey", href: "#timeline" },
+  { name: "Publications", href: "#publications" },
+  { name: "Projects", href: "#projects" },
+  { name: "Gallery", href: "#gallery" },
+  { name: "Contact", href: "#contact" },
+];
 
-  const quickLinks = [
-    { name: "Projects", href: "#projects" },
-    { name: "Publications", href: "#publications" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const services = [
-    "Environmental Consulting",
-    "Research Collaboration",
-    "Academic Mentoring",
-    "GIS Analysis",
-  ];
+const Footer = ({ footer, contact }: FooterProps) => {
+  const socials = socialLinks(contact);
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] text-white font-sans overflow-hidden">
-      {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
-
-      <div className="relative z-10 container-responsive py-8 sm:py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8"
-        >
-          {/* About Section */}
-          <div className="lg:col-span-2 bg-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20 shadow-2xl neon-glow">
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-yellow-300 drop-shadow-neon">
-              Ikhwanussafa Sadidan, M.Sc.
-            </h3>
-            <p className="text-cyan-200 mb-4 leading-relaxed text-sm sm:text-base">
-              Lecturer of Environmental Engineering Study Program, consultant,
-              and researcher dedicated to sustainable development and
-              environmental conservation. Specializing in environmental impact
-              assessment, biodiversity conservation, and climate adaptation
-              strategies.
+    <footer className="relative z-10 border-t border-line bg-[rgba(7,14,12,0.55)] backdrop-blur-xl">
+      <div className="container-responsive py-16 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">{footer.aboutTitle}</p>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-soft sm:text-[0.95rem]">
+              {footer.aboutText}
             </p>
-            <div className="flex space-x-3 sm:space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-10 h-10 sm:w-12 sm:h-12 bg-yellow-400/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 drop-shadow-neon neon-glow touch-friendly ${social.color}`}
-                  aria-label={social.name}
-                >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    width={24}
-                    height={24}
-                    className="w-5 h-5 sm:w-6 sm:h-6"
-                  />
-                </a>
-              ))}
-            </div>
+
+            {socials.length > 0 && (
+              <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                {socials.map((social) => (
+                  <li key={social.name}>
+                    <a
+                      href={social.url}
+                      target={social.url.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-muted transition-colors hover:text-gold"
+                    >
+                      {social.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
-          {/* Quick Links */}
-          <div className="bg-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-cyan-400/20 shadow-2xl neon-glow">
-            <h4 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-cyan-300 drop-shadow-neon">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
+          <nav aria-label="Footer navigation">
+            <h3 className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-muted">
+              Explore
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {explore.map((link) => (
+                <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-cyan-100 hover:text-yellow-300 transition-colors duration-200 text-sm touch-friendly block py-1"
+                    className="text-sm text-ink-soft transition-colors hover:text-ink"
                   >
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Services */}
-          <div className="bg-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-green-400/20 shadow-2xl neon-glow">
-            <h4 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-green-300 drop-shadow-neon">
+          <div>
+            <h3 className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-muted">
               Services
-            </h4>
-            <ul className="space-y-2">
-              {services.map((service, index) => (
-                <li key={index} className="text-cyan-100 text-sm">
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {footer.services.map((service, index) => (
+                <li
+                  key={`${service}-${index}`}
+                  className="text-sm leading-relaxed text-ink-soft"
+                >
                   {service}
                 </li>
               ))}
             </ul>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="border-t border-yellow-300/20 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center"
-        >
-          <div className="text-cyan-100 text-sm mb-4 md:mb-0 text-center md:text-left">
-            © {currentYear} H.K Freelance Studio. All rights reserved.
-          </div>
-          <div className="flex space-x-4 sm:space-x-6">
-            <a
-              href="/Privacy Policy_h.k.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly"
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted">
+            © {year} {footer.copyright}
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {footer.privacyUrl && (
+              <a
+                href={footer.privacyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted transition-colors hover:text-accent-soft"
+              >
+                Privacy
+              </a>
+            )}
+            {footer.termsUrl && (
+              <a
+                href={footer.termsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted transition-colors hover:text-accent-soft"
+              >
+                Terms
+              </a>
+            )}
+            <Link
+              href="/admin"
+              className="text-xs text-muted transition-colors hover:text-accent-soft"
             >
-              Privacy Policy
-            </a>
-            <a
-              href="/Terms of Service_hk.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cyan-100 hover:text-yellow-300 text-sm transition-colors duration-200 touch-friendly"
-            >
-              Terms of Service
-            </a>
+              Manage content
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

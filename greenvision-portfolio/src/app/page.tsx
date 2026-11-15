@@ -8,78 +8,45 @@ import Gallery from "../components/Gallery/Gallery";
 import Contact from "../components/Contact/Contact";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import PageBackground from "../components/ui/PageBackground";
+import { getAllContent } from "@/lib/content";
 
-const Divider = () => (
-  <div className="w-full flex justify-center items-center">
-    <svg
-      height="48"
-      width="100%"
-      viewBox="0 0 1440 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full"
-    >
-      <path
-        d="M0 24 Q 360 48 720 24 T 1440 24 V48 H0V24Z"
-        fill="url(#neon-gradient)"
-        opacity="0.7"
-      />
-      <defs>
-        <linearGradient
-          id="neon-gradient"
-          x1="0"
-          y1="0"
-          x2="1440"
-          y2="0"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#00ffe7" />
-          <stop offset="0.5" stopColor="#00ff85" />
-          <stop offset="1" stopColor="#00aaff" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-);
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+  const { settings, sections } = await getAllContent();
+
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
+    <div className="relative min-h-screen">
+      <PageBackground />
+      <Navbar name={settings.hero.name} />
+      <main className="relative z-10">
         <section id="hero">
-          <Hero />
+          <Hero hero={settings.hero} contact={settings.contact} />
         </section>
-        <Divider />
         <section id="timeline">
-          <Timeline />
+          <Timeline items={sections.timeline} />
         </section>
-        <Divider />
         <section id="language">
-          <Language />
+          <Language items={sections.language} />
         </section>
-        <Divider />
         <section id="publications">
-          <Publications />
+          <Publications items={sections.publications} />
         </section>
-        <Divider />
         <section id="awards">
-          <Awards />
+          <Awards items={sections.awards} />
         </section>
-        <Divider />
         <section id="projects">
-          <Projects />
+          <Projects items={sections.projects} />
         </section>
-        <Divider />
         <section id="gallery">
-          <Gallery />
+          <Gallery items={sections.gallery} cvUrl={settings.hero.cvUrl} />
         </section>
-        <Divider />
         <section id="contact">
-          <Contact />
+          <Contact contact={settings.contact} />
         </section>
       </main>
-      <Footer />
+      <Footer footer={settings.footer} contact={settings.contact} />
     </div>
   );
 }

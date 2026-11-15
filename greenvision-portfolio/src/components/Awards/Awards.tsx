@@ -1,219 +1,86 @@
 "use client";
 
-import { motion } from "framer-motion";
+import type { Award } from "../../lib/types";
+import SectionShell from "../ui/SectionShell";
+import Reveal from "../ui/Reveal";
 
-const AwardIcon = () => (
+const Laurel = () => (
   <svg
-    width="32"
-    height="32"
+    viewBox="0 0 24 24"
     fill="none"
-    viewBox="0 0 32 32"
-    className="text-gold"
+    aria-hidden
+    className="h-4 w-4 text-gold"
   >
-    <circle cx="16" cy="16" r="14" fill="#E6C200" fillOpacity="0.18" />
     <path
-      d="M16 6L18.09 12.26L24.97 12.27L19.45 16.14L21.54 22.4L16 18.53L10.46 22.4L12.55 16.14L7.03 12.27L13.91 12.26L16 6Z"
-      fill="#E6C200"
+      d="M12 3.5l1.4 4.1 4.1 1.4-4.1 1.4L12 14.5l-1.4-4.1L6.5 9l4.1-1.4L12 3.5Z"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.5 15.5c2.5 3 6.5 4.5 13 4"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      opacity="0.6"
     />
   </svg>
 );
 
-const awards = [
-  {
-    title: "Best Pitch Presenter",
-    organization:
-      "SEARCA Agro Innovator Program, University of the Philippines Los Banos",
-    year: "2025",
-    description:
-      "Recognized for outstanding presentation skills and innovative pitch in agricultural innovation program.",
-    category: "Presentation",
-  },
-  {
-    title: "Best Presenter",
-    organization:
-      "6th Borobudur International Symposium on Science and Technology, UNIMMA",
-    year: "2024",
-    description:
-      "Awarded for exceptional presentation at international symposium on science and technology.",
-    category: "Presentation",
-  },
-  {
-    title: "Supervising Lecturer for PIMNAS 2024",
-    organization: "PKM Video Constructive Ideas",
-    year: "2024",
-    description:
-      "Successfully supervised students for PIMNAS 2024 in PKM Video Constructive Ideas category.",
-    category: "Supervision",
-  },
-  {
-    title: "SPADA Documentary Video Grant",
-    organization: "Indonesian Ministry of Culture, Research and Technology",
-    year: "2023",
-    description:
-      "Received grant for Learning Video Innovation Competition from the Indonesian Ministry of Culture, Research and Technology.",
-    category: "Grant",
-  },
-  {
-    title: "Best Presenter",
-    organization:
-      "4th Borobudur International Symposium on Science and Technology, UNIMMA",
-    year: "2022",
-    description:
-      "Recognized for outstanding presentation at international symposium on science and technology.",
-    category: "Presentation",
-  },
-  {
-    title: "Second Best Paper",
-    organization:
-      "XIII International Scientific Symposium, Tomsk Polytechnic University",
-    year: "2019",
-    description:
-      "Awarded second place for research paper on 'Geoecological Problem of Subsoil Development'.",
-    category: "Research",
-  },
-  {
-    title: "Third Best Paper",
-    organization:
-      "XIII International Scientific Symposium, Tomsk Polytechnic University",
-    year: "2018",
-    description:
-      "Awarded third place for research paper on 'Geoecological Problem of Subsoil Development'.",
-    category: "Research",
-  },
-  {
-    title: "Russian Government Scholarship",
-    organization: "Russian Government",
-    year: "2016-2019",
-    description:
-      "Full scholarship awardee for master's degree studies in Russia.",
-    category: "Scholarship",
-  },
-  {
-    title: "Pikiran Rakyat Scholarship",
-    organization: "Pikiran Rakyat",
-    year: "2012-2013",
-    description: "Scholarship awardee for undergraduate studies.",
-    category: "Scholarship",
-  },
-];
+interface AwardsProps {
+  items: Award[];
+}
 
-const NeonBlob = ({ className }: { className?: string }) => (
-  <div
-    className={`absolute rounded-full blur-2xl opacity-60 pointer-events-none ${className}`}
-    style={{
-      background: "linear-gradient(135deg, #ffe600 0%, #00ffe7 100%)",
-      filter: "blur(60px)",
-    }}
-  />
-);
-
-const Awards = () => {
+const Awards = ({ items }: AwardsProps) => {
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-24 font-sans bg-gradient-to-br from-[#0a1826] via-[#0e2233] to-[#0a1826] overflow-hidden">
-      {/* Neon blobs */}
-      <NeonBlob className="top-[-80px] left-[-60px] w-48 h-48 sm:w-72 sm:h-72" />
-      <NeonBlob className="bottom-[-60px] right-[-40px] w-40 h-40 sm:w-60 sm:h-60" />
-
-      <div className="relative z-20 container-responsive">
-        <div className="text-center mb-12 sm:mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white drop-shadow-neon mb-4"
-          >
-            Achievements & Awards
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="origin-left w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-300 via-cyan-400 to-green-400 mx-auto rounded-full neon-glow"
-          />
-          <p className="text-base sm:text-lg text-yellow-100 mt-4 sm:mt-6 max-w-3xl mx-auto px-4">
-            Recognized for academic excellence, research contributions, and
-            professional achievements
-          </p>
-        </div>
-
-        <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          {awards.map((award, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/10 rounded-2xl p-6 sm:p-8 border border-yellow-300/30 hover:shadow-neon transition-all duration-300 hover:-translate-y-2 group flex flex-col backdrop-blur-xl glassmorphism neon-glow"
-            >
-              <div className="flex items-start space-x-3 sm:space-x-4 mb-4">
-                <motion.div
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 2,
-                    repeatType: "loop",
-                  }}
-                  className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center drop-shadow-neon"
-                >
-                  <AwardIcon />
-                </motion.div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-base sm:text-lg font-bold text-white leading-tight drop-shadow-neon">
-                      {award.title}
-                    </h3>
-                    <span
-                      className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
-                        award.category === "Presentation"
-                          ? "bg-yellow-400/20 text-yellow-300"
-                          : award.category === "Research"
-                            ? "bg-cyan-400/20 text-cyan-300"
-                            : award.category === "Scholarship"
-                              ? "bg-green-400/20 text-green-300"
-                              : award.category === "Grant"
-                                ? "bg-purple-400/20 text-purple-300"
-                                : "bg-pink-400/20 text-pink-300"
-                      }`}
-                    >
-                      {award.category}
-                    </span>
-                  </div>
-                  <p className="text-yellow-200 font-medium text-sm">
-                    {award.organization}
-                  </p>
-                  <p className="text-yellow-100 text-sm">{award.year}</p>
-                </div>
+    <SectionShell
+      index="05"
+      label="Awards"
+      title={
+        <>
+          Recognition &amp; <em className="not-italic text-gold-soft">trust</em>.
+        </>
+      }
+      intro="Grants, scholarships and professional honours awarded for research contributions and academic excellence."
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((award, index) => (
+          <Reveal key={award.id} delay={Math.min(index * 0.05, 0.3)}>
+            <article className="glass flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-gold/30">
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-mono text-[0.7rem] tracking-[0.1em] text-gold-soft">
+                  {award.year}
+                </span>
+                {award.category && (
+                  <span className="text-[0.56rem] uppercase tracking-[0.18em] text-muted">
+                    {award.category}
+                  </span>
+                )}
               </div>
-              <p className="text-yellow-100 text-sm leading-relaxed mb-4">
-                {award.description}
+
+              <div className="mt-5 flex items-start gap-2.5">
+                <span className="mt-1 shrink-0">
+                  <Laurel />
+                </span>
+                <h3 className="font-display text-[1.08rem] leading-snug text-ink">
+                  {award.title}
+                </h3>
+              </div>
+
+              <p className="mt-2 pl-[1.6rem] text-[0.8rem] font-medium text-ink-soft">
+                {award.organization}
               </p>
-              <div className="mt-auto pt-4 border-t border-yellow-300/20">
-                <button className="w-full px-4 py-2 sm:py-3 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-0.5 font-medium text-sm liquid-btn touch-friendly">
-                  View Certificate
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="bg-gradient-to-r from-white/10 to-yellow-300/10 rounded-xl p-6 sm:p-8 backdrop-blur-xl glassmorphism border border-yellow-300/20">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 drop-shadow-neon">
-              Let&apos;s Work Together
-            </h3>
-            <p className="text-yellow-100 mb-4 sm:mb-6 max-w-2xl mx-auto text-sm sm:text-base">
-              Ready to collaborate on environmental projects that make a
-              difference? Let&apos;s discuss how we can work together to create
-              sustainable solutions.
-            </p>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-yellow-300 to-cyan-400 text-white rounded-lg hover:shadow-neon transition-all duration-200 hover:-translate-y-1 font-semibold liquid-btn touch-friendly">
-              Get In Touch
-            </button>
-          </div>
-        </div>
+              {award.description && (
+                <p className="mt-4 border-t border-line pt-4 text-[0.82rem] leading-relaxed text-muted">
+                  {award.description}
+                </p>
+              )}
+            </article>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </SectionShell>
   );
 };
 

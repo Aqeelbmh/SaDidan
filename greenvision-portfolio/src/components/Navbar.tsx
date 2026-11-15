@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
-  { label: "Timeline", href: "#timeline" },
+  { label: "Journey", href: "#timeline" },
   { label: "Languages", href: "#language" },
   { label: "Publications", href: "#publications" },
   { label: "Awards", href: "#awards" },
@@ -13,205 +14,196 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+
+const Navbar = ({ name }: { name: string }) => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#hero");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+      setScrolled(window.scrollY > 40);
+      const scrollPosition = window.scrollY + 120;
 
-      // Check if navbar should have scrolled background
-      setScrolled(window.scrollY > 50);
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (
-            scrollPosition >= sectionTop &&
-            scrollPosition < sectionTop + sectionHeight
-          ) {
-            setActive(`#${sections[i]}`);
-            break;
-          }
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const id = navLinks[i].href.substring(1);
+        const section = document.getElementById(id);
+        if (!section) continue;
+        if (
+          scrollPosition >= section.offsetTop &&
+          scrollPosition < section.offsetTop + section.offsetHeight
+        ) {
+          setActive(navLinks[i].href);
+          break;
         }
       }
     };
 
-    // Set initial active section
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (open && !(event.target as Element).closest("nav")) {
-        setOpen(false);
-      }
-    };
-
-    if (open) {
-      document.addEventListener("mousedown", handleClickOutside);
-      // Prevent body scroll when mobile menu is open
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [open]);
 
   const handleNavClick = (href: string) => {
     setActive(href);
     setOpen(false);
-
-    // Smooth scroll to section
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    document
+      .getElementById(href.substring(1))
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/20 backdrop-blur-xl border-b border-yellow-300/30 shadow-lg"
-            : "bg-transparent"
+            ? "border-b border-line bg-[rgba(9,18,15,0.72)] backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
         }`}
       >
         <div className="container-responsive">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo/Brand */}
-            <div className="flex items-center">
-              {/* Removed 'Sadidan' brand text for a cleaner navbar */}
-            </div>
+          <div className="flex h-[4.5rem] items-center justify-between gap-6">
+            <a
+              href="#hero"
+              onClick={(event) => {
+                event.preventDefault();
+                handleNavClick("#hero");
+              }}
+              className="group flex items-center gap-3"
+              aria-label={`${name} — back to top`}
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 font-mono text-[0.62rem] tracking-[0.08em] text-gold-soft transition-colors group-hover:border-gold">
+                {initials(name) || "IS"}
+              </span>
+              <span className="hidden flex-col leading-tight sm:flex">
+                <span className="font-display text-[0.98rem] text-ink">
+                  {name}
+                </span>
+                <span className="mt-0.5 text-[0.58rem] uppercase tracking-[0.28em] text-muted">
+                  Environmental Scientist
+                </span>
+              </span>
+            </a>
 
-            {/* Desktop Navigation */}
-            <ul
-              className="hidden lg:flex gap-6 xl:gap-8 items-center"
-              role="menubar"
+            <nav
+              aria-label="Sections"
+              className="hidden items-center gap-5 lg:flex xl:gap-7"
             >
               {navLinks.map((link) => (
-                <li key={link.href} role="none">
-                  <a
-                    href={link.href}
-                    className={`px-3 py-2 rounded-lg font-medium transition-all duration-200 text-cyan-100 hover:text-yellow-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-transparent touch-friendly ${
-                      active === link.href
-                        ? "text-yellow-300 bg-white/10 underline underline-offset-4"
-                        : ""
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleNavClick(link.href);
+                  }}
+                  aria-current={active === link.href ? "true" : undefined}
+                  className={`relative py-2 text-[0.64rem] font-medium uppercase tracking-[0.2em] transition-colors ${
+                    active === link.href
+                      ? "text-ink"
+                      : "text-muted hover:text-ink-soft"
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-300 ${
+                      active === link.href ? "scale-x-100" : "scale-x-0"
                     }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    role="menuitem"
-                    tabIndex={0}
-                    aria-current={active === link.href ? "page" : undefined}
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                  />
+                </a>
               ))}
-            </ul>
+            </nav>
 
-            {/* Mobile Menu Button */}
             <button
-              className="lg:hidden touch-friendly p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-transparent"
-              onClick={() => setOpen(!open)}
+              type="button"
+              onClick={() => setOpen((value) => !value)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-full border border-line text-ink transition-colors hover:border-gold/50 lg:hidden"
             >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span
-                  className={`block w-6 h-0.5 bg-yellow-300 rounded-full transition-all duration-300 ${
-                    open ? "rotate-45 translate-y-0.5" : "-translate-y-1"
-                  }`}
-                />
-                <span
-                  className={`block w-6 h-0.5 bg-cyan-200 rounded-full transition-all duration-300 ${
-                    open ? "opacity-0" : "opacity-100"
-                  }`}
-                />
-                <span
-                  className={`block w-6 h-0.5 bg-yellow-300 rounded-full transition-all duration-300 ${
-                    open ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
-                  }`}
-                />
-              </div>
+              <span
+                className={`h-px w-4 bg-current transition-transform duration-300 ${
+                  open ? "translate-y-[3px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`h-px w-4 bg-current transition-opacity duration-300 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`h-px w-4 bg-current transition-transform duration-300 ${
+                  open ? "-translate-y-[3px] -rotate-45" : ""
+                }`}
+              />
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden bg-white/10 backdrop-blur-xl border-t border-yellow-300/20 shadow-lg"
-              id="mobile-menu"
-              role="menu"
-            >
-              <div className="container-responsive py-4">
-                <ul className="space-y-2">
-                  {navLinks.map((link) => (
-                    <li key={link.href} role="none">
-                      <a
-                        href={link.href}
-                        className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 touch-friendly ${
-                          active === link.href
-                            ? "text-yellow-300 bg-white/10"
-                            : "text-cyan-100 hover:text-yellow-300 hover:bg-white/5"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick(link.href);
-                        }}
-                        role="menuitem"
-                        tabIndex={0}
-                        aria-current={active === link.href ? "page" : undefined}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-
-      {/* Mobile menu overlay */}
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-            onClick={() => setOpen(false)}
-          />
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[rgba(7,14,12,0.96)] backdrop-blur-2xl lg:hidden"
+          >
+            <div className="container-responsive flex h-full flex-col justify-center pb-10 pt-24">
+              <ul className="space-y-1">
+                {navLinks.map((link, index) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -18 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + index * 0.04, ease: EASE }}
+                  >
+                    <a
+                      href={link.href}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        handleNavClick(link.href);
+                      }}
+                      className="flex items-baseline gap-4 border-b border-line/60 py-3.5"
+                    >
+                      <span className="font-mono text-[0.6rem] tracking-[0.2em] text-gold/70">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`font-display text-2xl ${
+                          active === link.href ? "text-gold-soft" : "text-ink"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+              <p className="mt-10 text-[0.62rem] uppercase tracking-[0.28em] text-muted">
+                {name} · Portfolio
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
