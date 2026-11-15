@@ -34,8 +34,13 @@ export async function POST(request: Request, context: Context) {
     await reorderItems(section, ids as string[]);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "The order could not be saved.";
-    return jsonError(message, 400);
+    if (
+      error instanceof Error &&
+      error.message === "The new order does not match the current items."
+    ) {
+      return jsonError("The new order does not match the current items.", 400);
+    }
+    console.error(`Failed to reorder ${section}`, error);
+    return jsonError("The order could not be saved.", 500);
   }
 }

@@ -56,12 +56,15 @@ The app must run as a Node server on Vercel. `output: "export"` must stay remove
 
 ## Security
 
-- Password comparison is timing-safe; the login endpoint limits attempts (8 per 10 minutes per client).
-- The admin session is an encrypted, 7-day cookie; signing out clears it.
+- Password comparison is timing-safe; the login endpoint limits attempts (8 per 10 minutes per client, plus a shared ceiling of 40 per instance so rotating IPs cannot buy unlimited guesses).
+- `ADMIN_PASSWORD` should be at least 12 characters; the server logs a warning at startup when it is shorter.
+- The admin session is an encrypted `__Host-` cookie that expires after 48 hours; signing out clears it.
+- Every response carries a Content Security Policy, HSTS, frame-ancestors/nosniff/referrer-policy headers, and Next.js stops advertising its version.
 - In production the app refuses to start admin login if `ADMIN_PASSWORD` or a valid `SESSION_SECRET` is missing.
 - Link fields reject `javascript:` and other unsafe schemes server-side.
 - Uploads are validated by file signature, capped at 6 MB, and require an admin session.
 - Only one admin password exists; there are no user accounts.
+- Keep the dependency tree patched: run `npm audit` before each deploy. The lockfile pins a patched `postcss` through `overrides`.
 
 ## Data model
 

@@ -28,9 +28,11 @@ export async function PATCH(request: Request, context: Context) {
     const item = await updateItem(section, id, normalized.value);
     return NextResponse.json(item);
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "The item could not be updated.";
-    return jsonError(message, message === "Item not found." ? 404 : 500);
+    if (error instanceof Error && error.message === "Item not found.") {
+      return jsonError("Item not found.", 404);
+    }
+    console.error(`Failed to update ${section} item`, error);
+    return jsonError("The item could not be updated.", 500);
   }
 }
 
@@ -45,8 +47,10 @@ export async function DELETE(_request: Request, context: Context) {
     await deleteItem(section, id);
     return NextResponse.json({ ok: true });
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "The item could not be deleted.";
-    return jsonError(message, message === "Item not found." ? 404 : 500);
+    if (error instanceof Error && error.message === "Item not found.") {
+      return jsonError("Item not found.", 404);
+    }
+    console.error(`Failed to delete ${section} item`, error);
+    return jsonError("The item could not be deleted.", 500);
   }
 }

@@ -13,10 +13,12 @@ export async function GET(_request: Request, context: Context) {
     const image = await getImage(id);
     if (!image) return jsonError("Image not found.", 404);
 
-    return new NextResponse(image.data, {
+    const body = new Uint8Array(image.data);
+
+    return new NextResponse(body, {
       headers: {
         "Content-Type": image.mime,
-        "Content-Length": String(image.data.byteLength),
+        "Content-Length": String(body.byteLength),
         "Cache-Control": "public, max-age=31536000, immutable",
         "X-Content-Type-Options": "nosniff",
       },

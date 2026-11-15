@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   adminPasswordConfigured,
   clearAttempts,
+  clientKey,
   getSession,
   isRateLimited,
   recordFailedAttempt,
@@ -9,6 +10,8 @@ import {
 } from "@/lib/auth";
 
 export const runtime = "nodejs";
+
+const MAX_BODY_BYTES = 4096;
 
 export async function POST(request: NextRequest) {
   if (!adminPasswordConfigured()) {
@@ -21,15 +24,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "local";
+  const declaredLength = Number(request.headers.get("content-length") ?? 0);
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) {
+    return NextResponse.json({ error: "Invalid request." }, { status: 413 });
+  }
 
-  if (isRateLimited(ip)) {
+  const key = clientKey(request.headers);
+
+  if (isRateLimited(key)) {
     return NextResponse.json(
       { error: "Too many attempts. Please wait a few minutes and try again." },
-      { status: 429 },
+      { status: 429, headers: { "Retry-After": "600" } },
     );
   }
 
@@ -42,14 +47,14 @@ export async function POST(request: NextRequest) {
   }
 
   if (!verifyAdminPassword(password)) {
-    recordFailedAttempt(ip);
+    recordFailedAttempt(key);
     return NextResponse.json(
       { error: "That password is not correct." },
       { status: 401 },
     );
   }
 
-  clearAttempts(ip);
+  clearAttempts(key);
   const session = await getSession();
   session.isAdmin = true;
   session.loggedInAt = Date.now();

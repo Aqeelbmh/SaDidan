@@ -50,6 +50,11 @@ export async function POST(request: Request) {
   const denied = await requireAdmin();
   if (denied) return denied;
 
+  const declaredLength = Number(request.headers.get("content-length") ?? 0);
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_BYTES + 1024) {
+    return jsonError("Images must be smaller than 6 MB.", 413);
+  }
+
   let form: FormData;
   try {
     form = await request.formData();
