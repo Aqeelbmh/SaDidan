@@ -48,6 +48,14 @@ const SCHEMA = [
     data BLOB NOT NULL,
     created_at TEXT NOT NULL
   )`,
+  `CREATE TABLE IF NOT EXISTS documents (
+    id TEXT PRIMARY KEY,
+    mime TEXT NOT NULL,
+    filename TEXT,
+    size INTEGER NOT NULL,
+    data BLOB NOT NULL,
+    created_at TEXT NOT NULL
+  )`,
 ];
 
 async function seed(db: Client): Promise<void> {

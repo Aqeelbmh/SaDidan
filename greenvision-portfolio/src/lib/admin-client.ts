@@ -73,10 +73,23 @@ export async function uploadImageFile(
   file: File,
 ): Promise<{ id: string; url: string }> {
   const prepared = await compressImage(file);
-  const form = new FormData();
-  form.append("file", prepared);
+  return uploadFile("/api/images", prepared);
+}
 
-  const response = await fetch("/api/images", {
+export async function uploadDocumentFile(
+  file: File,
+): Promise<{ id: string; url: string }> {
+  return uploadFile("/api/documents", file);
+}
+
+async function uploadFile(
+  endpoint: string,
+  file: File,
+): Promise<{ id: string; url: string }> {
+  const form = new FormData();
+  form.append("file", file);
+
+  const response = await fetch(endpoint, {
     method: "POST",
     body: form,
   });
@@ -93,7 +106,7 @@ export async function uploadImageFile(
   };
 
   if (!response.ok || !data.url || !data.id) {
-    throw new Error(data.error || "The image could not be uploaded.");
+    throw new Error(data.error || "The file could not be uploaded.");
   }
 
   return { id: data.id, url: data.url };
@@ -104,4 +117,13 @@ export async function deleteUploadedImage(url: string): Promise<void> {
   const id = url.slice("/api/images/".length);
   if (!id) return;
   await fetch(`/api/images/${id}`, { method: "DELETE" }).catch(() => undefined);
+}
+
+export async function deleteUploadedDocument(url: string): Promise<void> {
+  if (!url.startsWith("/api/documents/")) return;
+  const id = url.slice("/api/documents/".length);
+  if (!id) return;
+  await fetch(`/api/documents/${id}`, { method: "DELETE" }).catch(
+    () => undefined,
+  );
 }

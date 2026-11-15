@@ -226,6 +226,14 @@ export async function saveSettings(
   });
 }
 
+function toBytes(value: unknown): Uint8Array {
+  if (value instanceof ArrayBuffer) return new Uint8Array(value);
+  if (ArrayBuffer.isView(value)) {
+    return new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
+  }
+  return new Uint8Array(0);
+}
+
 export interface StoredImage {
   mime: string;
   data: Uint8Array;
@@ -263,23 +271,66 @@ export async function getImage(id: string): Promise<StoredImage | null> {
   const row = result.rows[0];
   if (!row) return null;
 
-  const value = row.data;
-  let data: Uint8Array;
-  if (value instanceof ArrayBuffer) {
-    data = new Uint8Array(value);
-  } else if (ArrayBuffer.isView(value)) {
-    data = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
-  } else {
-    data = new Uint8Array(0);
-  }
-
-  return { mime: String(row.mime), data };
+  return { mime: String(row.mime), data: toBytes(row.data) };
 }
 
 export async function deleteImage(id: string): Promise<void> {
   await ensureDb();
   await getDb().execute({
     sql: "DELETE FROM images WHERE id = ?",
+    args: [id],
+  });
+}
+
+export interface StoredDocument {
+  mime: string;
+  filename: string;
+  data: Uint8Array;
+}
+
+export async function saveDocument(input: {
+  mime: string;
+  filename: string;
+  data: Uint8Array;
+}): Promise<{ id: string; url: string }> {
+  await ensureDb();
+  const id = crypto.randomUUID();
+  await getDb().execute({
+    sql: `INSERT INTO documents (id, mime, filename, size, data, created_at)
+      VALUES (?, ?, ?, ?, ?, ?)`,
+    args: [
+      id,
+      input.mime,
+      input.filename.slice(0, 200),
+      input.data.byteLength,
+      input.data,
+      new Date().toISOString(),
+    ],
+  });
+
+  return { id, url: `/api/documents/${id}` };
+}
+
+export async function getDocument(id: string): Promise<StoredDocument | null> {
+  await ensureDb();
+  const result = await getDb().execute({
+    sql: "SELECT mime, filename, data FROM documents WHERE id = ?",
+    args: [id],
+  });
+  const row = result.rows[0];
+  if (!row) return null;
+
+  return {
+    mime: String(row.mime),
+    filename: String(row.filename ?? "document.pdf"),
+    data: toBytes(row.data),
+  };
+}
+
+export async function deleteDocument(id: string): Promise<void> {
+  await ensureDb();
+  await getDb().execute({
+    sql: "DELETE FROM documents WHERE id = ?",
     args: [id],
   });
 }

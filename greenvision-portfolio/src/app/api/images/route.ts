@@ -4,7 +4,7 @@ import { jsonError, requireAdmin } from "@/lib/route-auth";
 
 export const runtime = "nodejs";
 
-const MAX_BYTES = 6 * 1024 * 1024;
+const MAX_BYTES = 4 * 1024 * 1024;
 
 function detectImageMime(bytes: Uint8Array): string | null {
   if (bytes.length < 12) return null;
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
 
   const declaredLength = Number(request.headers.get("content-length") ?? 0);
   if (Number.isFinite(declaredLength) && declaredLength > MAX_BYTES + 1024) {
-    return jsonError("Images must be smaller than 6 MB.", 413);
+    return jsonError("Images must be smaller than 4 MB.", 413);
   }
 
   let form: FormData;
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     return jsonError("The selected file is empty.");
   }
   if (file.size > MAX_BYTES) {
-    return jsonError("Images must be smaller than 6 MB.");
+    return jsonError("Images must be smaller than 4 MB.");
   }
 
   const bytes = new Uint8Array(await file.arrayBuffer());

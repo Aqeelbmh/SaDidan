@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import type { SettingsGroupDef, SettingsKey } from "../../lib/sections";
 import type { SiteSettings } from "../../lib/types";
-import { apiFetch, deleteUploadedImage } from "../../lib/admin-client";
+import { apiFetch, deleteUploadedDocument, deleteUploadedImage } from "../../lib/admin-client";
 import FieldInput from "./FieldInput";
 import Toast, { type ToastState } from "./Toast";
 import { ACCENTS, CARD_CLASS } from "./theme";
@@ -21,6 +21,20 @@ export default function SettingsManager({
   loadError,
 }: SettingsManagerProps) {
   const [values, setValues] = useState<Record<string, Record<string, unknown>>>(
+    () =>
+      Object.fromEntries(
+        groups.map((group) => [
+          group.key,
+          {
+            ...(initial[group.key as SettingsKey] as unknown as Record<
+              string,
+              unknown
+            >),
+          },
+        ]),
+      ),
+  );
+  const [saved, setSaved] = useState<Record<string, Record<string, unknown>>>(
     () =>
       Object.fromEntries(
         groups.map((group) => [
@@ -71,20 +85,20 @@ export default function SettingsManager({
         body: JSON.stringify({ group: activeGroup.key, values: payload }),
       });
 
-      const before = initial[
-        activeGroup.key as SettingsKey
-      ] as unknown as Record<string, unknown>;
+      const before = saved[activeGroup.key] ?? {};
       for (const field of activeGroup.fields) {
-        if (field.type !== "image") continue;
-        const oldUrl = before?.[field.key];
+        if (field.type !== "image" && field.type !== "file") continue;
+        const oldUrl = before[field.key];
         if (
           typeof oldUrl === "string" &&
           oldUrl &&
           oldUrl !== payload[field.key]
         ) {
-          await deleteUploadedImage(oldUrl);
+          if (field.type === "image") await deleteUploadedImage(oldUrl);
+          else await deleteUploadedDocument(oldUrl);
         }
       }
+      setSaved((current) => ({ ...current, [activeKey]: payload }));
 
       setToast({
         kind: "success",
@@ -173,7 +187,9 @@ export default function SettingsManager({
             <div
               key={field.key}
               className={
-                field.type === "textarea" || field.type === "image"
+                field.type === "textarea" ||
+                field.type === "image" ||
+                field.type === "file"
                   ? "sm:col-span-2"
                   : ""
               }

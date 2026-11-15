@@ -14,7 +14,8 @@ export type FieldType =
   | "number"
   | "select"
   | "tags"
-  | "image";
+  | "image"
+  | "file";
 
 export type Accent = "yellow" | "cyan" | "green" | "purple" | "pink";
 
@@ -207,7 +208,7 @@ export const SETTINGS_GROUPS: SettingsGroupDef[] = [
       { key: "bio2", label: "Introduction — paragraph 2", type: "textarea", rows: 4 },
       { key: "closing", label: "Closing line", type: "text" },
       { key: "profileImage", label: "Portrait", type: "image" },
-      { key: "cvUrl", label: "CV link", type: "text", help: "Uploaded PDF path or external link." },
+      { key: "cvUrl", label: "CV file", type: "file", help: "Upload a PDF, or paste an external link. Used by every Download CV button." },
       { key: "roleTitle", label: "Profile card — role", type: "text" },
       { key: "roleOrg", label: "Profile card — institution", type: "text" },
       { key: "tags", label: "Profile card — tags", type: "tags", help: "Separate with commas." },
@@ -357,7 +358,12 @@ export function normalizeFields(
       return { ok: false, error: `${field.label} is required.` };
     }
 
-    if (text && /^(imageUrl|profileImage|privacyUrl|termsUrl|githubUrl|liveUrl|cvUrl|formEndpoint|facebook|instagram|linkedin|youtube|doi)$/.test(field.key) && !isSafeLink(text)) {
+    const isLinkField =
+      field.type === "file" ||
+      /^(imageUrl|profileImage|privacyUrl|termsUrl|githubUrl|liveUrl|cvUrl|formEndpoint|facebook|instagram|linkedin|youtube|doi)$/.test(
+        field.key,
+      );
+    if (text && isLinkField && !isSafeLink(text)) {
       return { ok: false, error: `${field.label} must be a full link or a path starting with /.` };
     }
 

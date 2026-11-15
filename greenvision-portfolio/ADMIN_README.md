@@ -7,6 +7,7 @@ Every piece of text, project, publication, award, gallery entry, image and socia
 - The public page (`/`) is server-rendered on every request from the database.
 - The admin area lives at `/admin`, protected by one password.
 - Images are uploaded, compressed in the browser, and stored in the database; they are served from `/api/images/<id>` with immutable caching.
+- The CV is uploaded as a PDF from **Profile → Hero → CV file** and served from `/api/documents/<id>` as a download.
 - On first run the database is seeded with the current portfolio content, so the site looks identical before you touch anything.
 
 ## Local development
@@ -31,9 +32,10 @@ Open http://localhost:3000/admin and sign in. Data lives in `local.db` (gitignor
 ## Editing content
 
 - **Overview** — counts per section and system status.
-- **Profile** — hero name, headline, bio, portrait, CV link, stats, contact details, social links, footer text.
+- **Profile** — hero name, headline, bio, portrait, CV PDF, stats, contact details, social links, footer text.
 - **Journey / Languages / Publications / Awards / Projects / Gallery** — add, edit, reorder (arrows) and delete entries.
 - Images: use **Upload an image** (JPG/PNG/WebP/GIF/AVIF, resized to max 1600px) or paste an existing path/URL.
+- CV: use **Upload a PDF** (up to 4 MB) or paste an external link. Replacing or removing it deletes the old upload.
 
 Deleting an entry removes it from the site immediately. There is no undo.
 
@@ -62,7 +64,7 @@ The app must run as a Node server on Vercel. `output: "export"` must stay remove
 - Every response carries a Content Security Policy, HSTS, frame-ancestors/nosniff/referrer-policy headers, and Next.js stops advertising its version.
 - In production the app refuses to start admin login if `ADMIN_PASSWORD` or a valid `SESSION_SECRET` is missing.
 - Link fields reject `javascript:` and other unsafe schemes server-side.
-- Uploads are validated by file signature, capped at 6 MB, and require an admin session.
+- Uploads are validated by file signature, capped at 4 MB (Vercel's request-body limit), and require an admin session. PDFs are always served as attachments.
 - Only one admin password exists; there are no user accounts.
 - Keep the dependency tree patched: run `npm audit` before each deploy. The lockfile pins a patched `postcss` through `overrides`.
 
@@ -73,6 +75,7 @@ The app must run as a Node server on Vercel. `output: "export"` must stay remove
 | `content_items` | `id`, `section`, `data` (JSON), `position`                      |
 | `settings`      | `key` (`hero`, `contact`, `footer`), `value` (JSON)             |
 | `images`        | `id`, `mime`, `filename`, `size`, `data` (BLOB), `created_at`   |
+| `documents`     | `id`, `mime`, `filename`, `size`, `data` (BLOB), `created_at`   |
 
 ## API
 
@@ -92,6 +95,9 @@ PUT    /api/settings                { group, values }
 POST   /api/images                  multipart file
 GET    /api/images/:id
 DELETE /api/images/:id
+POST   /api/documents               multipart PDF
+GET    /api/documents/:id
+DELETE /api/documents/:id
 ```
 
 Sections: `timeline`, `language`, `publications`, `awards`, `projects`, `gallery`.
